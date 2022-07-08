@@ -1,15 +1,31 @@
-import ProviderCard from './components/ProviderCard';
+import React, { useState, useEffect } from 'react';
+
+import HomePage from './pages/HomePage';
+import SplashPage from './pages/SplashPage';
+
+// import SignUp from './components/SignUp';
+// import SignIn from './components/SignIn';
+// import ForgotPassword from './components/ForgotPassword';
 
 function App() {
+  const [splash, setSplash] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSplash(false);
+    }, 8000);
+  }, []);
   return (
-    <div className="flex overflow-x-scroll">
-      <ProviderCard />
-      <ProviderCard />
-      <ProviderCard />
-      <ProviderCard />
-      <ProviderCard />
-      <ProviderCard />
-    </div>
+    <>
+      {splash
+        ? <SplashPage />
+        : (
+          <div>
+            <HomePage />
+          </div>
+        )}
+
+    </>
   );
 }
 
