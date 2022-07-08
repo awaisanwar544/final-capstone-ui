@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NavigationBar from './components/NavigationBar';
+import HomePage from './pages/HomePage';
 import SplashPage from './pages/SplashPage';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <div>
       {splash
         ? <SplashPage />
-        : <NavigationBar />}
+        : <HomePage />}
     </div>
   );
 }

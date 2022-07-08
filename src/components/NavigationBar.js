@@ -5,7 +5,7 @@ import {
 
 function NavigationBar() {
   return (
-    <div className="flex flex-col justify-between p-5 pr-0 items-center bg-custom-white-500 fixed top-0 left-0 h-screen w-1/5 shadow-xl">
+    <div className="flex flex-col justify-between p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
       <div className="">Logo</div>
       <div className="w-full pl-10">
         <div className="flex flex-col bg-custom-green-500 text-custom-white-500 text-xl font-extrabold h-20 justify-center p-5"><p>Link 1</p></div>
