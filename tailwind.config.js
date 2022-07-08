@@ -9,7 +9,7 @@ module.exports = {
         'custom-green': {
           500: '#97BF11',
         },
-        'custom-bg': {
+        'custom-white': {
           500: '#FFFFFF',
         },
         'custom-grey': {

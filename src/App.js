@@ -1,8 +1,21 @@
+import React, { useState, useEffect } from 'react';
+import NavigationBar from './components/NavigationBar';
+import SplashPage from './pages/SplashPage';
+
 function App() {
+  const [splash, setSplash] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSplash(false);
+    }, 8000);
+  }, []);
   return (
-    <h1 className="text-3xl text-custom-green-500">
-      Hello world!
-    </h1>
+    <div>
+      {splash
+        ? <SplashPage />
+        : <NavigationBar />}
+    </div>
   );
 }
 
