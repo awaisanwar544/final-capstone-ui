@@ -1,8 +1,13 @@
+import NavigationBar from '../components/NavigationBar';
+
 function Reservations() {
   return (
-    <>
-      <h1>Reservations Pages</h1>
-    </>
+    <div className="flex">
+      <NavigationBar />
+      <div>
+        <h1>This is the Reservations page</h1>
+      </div>
+    </div>
   );
 }
 
