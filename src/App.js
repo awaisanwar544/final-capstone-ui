@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
+
 import AppRoutes from './components/AppRoutes';
 
 import SplashPage from './pages/SplashPage';
@@ -10,21 +11,31 @@ import SplashPage from './pages/SplashPage';
 function App() {
   const [splash, setSplash] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSplash(false);
-    }, 8000);
-  }, []);
+  const changeSplash = () => {
+    setSplash(false);
+  };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSplash(false);
+  //   }, 8000);
+  // }, []);
   return (
     <>
       {splash
-        ? <SplashPage />
+        ? (
+          <>
+            <Router>
+              <SplashPage changeSplash={changeSplash} />
+            </Router>
+          </>
+        )
         : (
-          <div>
+          <>
             <Router>
               <AppRoutes />
             </Router>
-          </div>
+          </>
         )}
 
     </>
