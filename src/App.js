@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import HomePage from './pages/HomePage';
+
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+import AppRoutes from './components/AppRoutes';
+
 import SplashPage from './pages/SplashPage';
 
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import ForgotPassword from './components/ForgotPassword';
-
-
 function App() {
-  const [splash, setSplash] = useState(true);
+  const [splash, setSplash] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -19,13 +19,14 @@ function App() {
     <>
       {splash
         ? <SplashPage />
-        : <div>
-            <HomePage />
-            <SignUp />
-            <SignIn />
-            <ForgotPassword />
-          </div>}
-      
+        : (
+          <div>
+            <Router>
+              <AppRoutes />
+            </Router>
+          </div>
+        )}
+
     </>
   );
 }
