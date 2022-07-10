@@ -8,7 +8,7 @@ import AppRoutes from './components/AppRoutes';
 import SplashPage from './pages/SplashPage';
 
 function App() {
-  const [splash, setSplash] = useState(false);
+  const [splash, setSplash] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
