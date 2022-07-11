@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import HomePage from './pages/HomePage';
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+
 import SplashPage from './pages/SplashPage';
 
-import SignUp from './components/SignUp';
-import SignIn from './components/SignIn';
-import ForgotPassword from './components/ForgotPassword';
+import AppRoutes from './components/AppRoutes';
 
 function App() {
   const [splash, setSplash] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSplash(false);
-    }, 8000);
-  }, []);
+  const changeSplash = () => {
+    setSplash(false);
+  };
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSplash(false);
+  //   }, 8000);
+  // }, []);
   return (
     <>
       {splash
-        ? <SplashPage />
+        ? (
+          <>
+            <Router>
+              <SplashPage changeSplash={changeSplash} />
+            </Router>
+          </>
+        )
         : (
-          <div>
-            <HomePage />
-            <SignUp />
-            <SignIn />
-            <ForgotPassword />
-          </div>
+          <>
+            <Router>
+              <AppRoutes />
+            </Router>
+          </>
         )}
     </>
   );

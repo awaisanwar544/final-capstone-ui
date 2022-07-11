@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 function SignIn() {
   return (
-    <div className="w-screen h-screen flex items-center">
+    <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="email">
@@ -18,13 +20,14 @@ function SignIn() {
           <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
             Sign In
           </button>
-          <a
+          <Link
             className="inline-block align-baseline font-bold text-sm text-custom-grey-500
             hover:text-custom-green-500"
-            href="#home"
+            to="/forgot-password"
+            exact
           >
             Forgot Password?
-          </a>
+          </Link>
         </div>
         <div className="flex items-center justify-center">
           <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
