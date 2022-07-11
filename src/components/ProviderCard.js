@@ -5,7 +5,7 @@ import {
 
 function ProviderCard() {
   return (
-    <div className="flex flex-col mx-6">
+    <div className="flex flex-col mx-6 bg-custom-white-500">
       <div className="item w-auto h-40">
         <img className="w-40 h-40 m-auto object-contain rounded-full bg-custom-green-500" src="https://w7.pngwing.com/pngs/905/43/png-transparent-management-professional-sales-business-service-lawyer-company-service-people-thumbnail.png" alt="Person" />
       </div>

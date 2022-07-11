@@ -19,12 +19,14 @@ function App() {
     <>
       {splash
         ? <SplashPage />
-        : <div>
+        : (
+          <div>
             <HomePage />
             <SignUp />
             <SignIn />
             <ForgotPassword />
-          </div>}
+          </div>
+        )}
     </>
   );
 }
