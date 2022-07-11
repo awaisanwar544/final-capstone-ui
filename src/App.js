@@ -4,9 +4,10 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 
-import AppRoutes from './components/AppRoutes';
-
+import HomePage from './pages/HomePage';
 import SplashPage from './pages/SplashPage';
+
+import AppRoutes from './components/AppRoutes';
 
 function App() {
   const [splash, setSplash] = useState(true);
@@ -37,7 +38,6 @@ function App() {
             </Router>
           </>
         )}
-
     </>
   );
 }
