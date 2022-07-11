@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
 import SplashPage from './pages/SplashPage';
 
 import AppRoutes from './components/AppRoutes';
