@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
 import HomePage from './pages/HomePage';
 import SplashPage from './pages/SplashPage';
 
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import ForgotPassword from './components/ForgotPassword';
-
 
 function App() {
   const [splash, setSplash] = useState(true);
@@ -19,13 +19,14 @@ function App() {
     <>
       {splash
         ? <SplashPage />
-        : <div>
+        : (
+          <div>
             <HomePage />
             <SignUp />
             <SignIn />
             <ForgotPassword />
-          </div>}
-      
+          </div>
+        )}
     </>
   );
 }
