@@ -10,8 +10,8 @@ import MyReservations from '../pages/MyReservations';
 import AddDeveloper from '../pages/AddDeveloper';
 import DeleteDeveloper from '../pages/DeleteDeveloper';
 
-import SignUp from './SignUp';
-import SignIn from './SignIn';
+import SignUp from '../pages/SignUp';
+import SignIn from '../pages/SignIn';
 import ForgotPassword from './ForgotPassword';
 
 function AppRoutes() {
