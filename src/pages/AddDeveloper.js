@@ -1,11 +1,13 @@
 import NavigationBar from '../components/NavigationBar';
 
+import NewProviderForm from '../components/NewProviderForm';
+
 function AddDeveloper() {
   return (
     <div className="flex">
       <NavigationBar />
-      <div>
-        <h1>This is the Add Developer page</h1>
+      <div className="w-4/5">
+        <NewProviderForm />
       </div>
     </div>
   );
