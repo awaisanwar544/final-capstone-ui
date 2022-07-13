@@ -13,6 +13,7 @@ import DeleteDeveloper from '../pages/DeleteDeveloper';
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
 import ForgotPassword from './ForgotPassword';
+import DeveloperDetailsPage from '../pages/DeveloperDetailsPage';
 
 function AppRoutes() {
   return (
@@ -24,6 +25,7 @@ function AppRoutes() {
       <Route path="/reservations" exact element={<MyReservations />} />
       <Route path="/add-developer" exact element={<AddDeveloper />} />
       <Route path="/delete-developer" exact element={<DeleteDeveloper />} />
+      <Route path="/developer/:id" exact element={<DeveloperDetailsPage />} />
     </Routes>
   );
 }
