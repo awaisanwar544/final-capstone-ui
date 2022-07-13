@@ -1,0 +1,40 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faTwitter, faGithub, faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
+
+function ProviderCard() {
+  return (
+    <div className="flex justify-around items-center mt-8 p-4 shadow-lg w-3/4 border-4 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl hover:scale-105">
+      <div className="item w-auto h-20">
+        <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src="https://w7.pngwing.com/pngs/905/43/png-transparent-management-professional-sales-business-service-lawyer-company-service-people-thumbnail.png" alt="Person" />
+      </div>
+      <div className="item w-auto h-28 text-center flex flex-col justify-around">
+        <h3>Person</h3>
+        <span className="text-custom-grey-500 select-none">..................</span>
+        <p className="text-custom-grey-500">People that something</p>
+      </div>
+      <div className="item w-auto h-12">
+        <ul className="flex w-52 justify-around">
+          <li>
+            <a className="rounded-full border-2 border-custom-gray-500 p-1" href="https://github.com/Kakalanp" without rel="noreferrer" target="_blank">
+              <FontAwesomeIcon className="w-5 text-custom-grey-500 bg:white-500 text-xl" icon={faGithub} />
+            </a>
+          </li>
+          <li>
+            <a className="rounded-full border-2 border-custom-gray-500 p-1" href="https://www.linkedin.com/in/joaquin-garrido-lecca-zanetti/" without rel="noreferrer" target="_blank">
+              <FontAwesomeIcon className="w-5 text-custom-grey-500 bg:white-500 text-xl" icon={faLinkedin} />
+            </a>
+          </li>
+          <li>
+            <a className="rounded-full border-2 border-custom-gray-500 p-1" href="https://twitter.com/LeccaJoaquin" without rel="noreferrer" target="_blank">
+              <FontAwesomeIcon className="w-5 text-custom-grey-500 bg:white-500 text-xl" icon={faTwitter} />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default ProviderCard;
