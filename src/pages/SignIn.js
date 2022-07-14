@@ -13,6 +13,7 @@ function SignIn() {
     const password = event.target[1].value;
     dispatch(logIn(email, password));
   };
+
   return (
     <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>

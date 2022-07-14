@@ -1,10 +1,15 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
-
 import logo from '../assets/logo.png';
 
+import { getProviders } from '../redux/reducers/providers';
+
 function SplashPage({ changeSplash }) {
+  const dispatch = useDispatch();
+
+  dispatch(getProviders());
+
   return (
     <div className="flex flex-col mt-20 items-center">
       <div className="flex w-full p-10 justify-center">
