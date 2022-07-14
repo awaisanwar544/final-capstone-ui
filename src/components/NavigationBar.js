@@ -9,7 +9,7 @@ function NavigationBar() {
   const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500';
   const activeClassName = 'flex flex-col bg-custom-green-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
   return (
-    <div className="flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
+    <div className="hidden lg:flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
       <a href="/" className="w-24">
         <img className="object-contain" src={logo} alt="logo" />
       </a>
