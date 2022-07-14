@@ -1,9 +1,11 @@
 import NavigationBar from '../components/NavigationBar';
 import ProviderCardLandscape from '../components/ProviderCardLandscape';
+import MobileMenu from '../components/MobileMenu';
 
 function DeleteDeveloper() {
   return (
     <div className="flex">
+      <MobileMenu />
       <NavigationBar />
       <div className="w-screen h-screen flex flex-col items-center my-12 space-y-20 md:overflow-y-hidden">
         <div className="flex flex-col items-center">
