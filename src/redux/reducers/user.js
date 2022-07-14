@@ -10,6 +10,8 @@ const PASSWORD_RESET = 'PASSWORD_RESET';
 const URL = 'https://bookdev-api.herokuapp.com/api';
 const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
 
+const initialState = {};
+
 const axiosAppConfig = {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -25,7 +27,8 @@ export const signUp = (name, email, password) => async (dispatch) => {
     password,
   };
 
-  const response = axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig);
+  const response = await axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: SIGN_UP,
     payload: response,
@@ -85,14 +88,13 @@ export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
 };
 
 // reducer
-export default function userReducer(state = {}, action) {
-  switch (action.type) {
-    default: return state;
-
-    case SIGN_UP:
-      return {
-        ...state,
-        token: action.payload.token,
-      };
+export default function userReducer(state = initialState, action = {}) {
+  if (action.type === SIGN_UP) {
+    return {
+      ...state,
+      ...action.payload,
+    };
   }
+
+  return state;
 }
