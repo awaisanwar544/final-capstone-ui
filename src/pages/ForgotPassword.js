@@ -1,7 +1,14 @@
+import logo from '../assets/logo.png';
+
 function ForgotPassword() {
   return (
-    <div className="w-screen h-screen flex items-center">
+    <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs">
+        <div className="flex w-full p-10 justify-center">
+          <a href="/">
+            <img className="w-24" src={logo} alt="logo" />
+          </a>
+        </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="email">
             E-mail
