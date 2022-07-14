@@ -7,7 +7,7 @@ const LOG_OUT = 'LOG_OUT';
 const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 const PASSWORD_RESET = 'PASSWORD_RESET';
 
-const URL = 'https://bookdev-api.herokuapp.com/api/user/add';
+const URL = 'https://bookdev-api.herokuapp.com/api';
 const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
 
 const axiosAppConfig = {
@@ -25,7 +25,7 @@ export const signUp = (name, email, password) => async (dispatch) => {
     password,
   };
 
-  const response = axios.post(URL, JSON.stringify(data), axiosAppConfig)
+  const response = axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
     .then((res) => {
       console.log(res); // here we should save the token
     });
@@ -41,7 +41,7 @@ export const logIn = (email, password) => async (dispatch) => {
     password,
   };
 
-  const response = axios.post(URL, JSON.stringify(data), axiosAppConfig)
+  const response = axios.post(`${URL}/user`, JSON.stringify(data), axiosAppConfig)
     .then((res) => {
       console.log(res); // here we should save the token
     });
@@ -61,7 +61,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     email,
   };
 
-  const response = axios.post(URL, JSON.stringify(data), axiosAppConfig)
+  const response = axios.post(`${URL}/password/forgot`, JSON.stringify(data), axiosAppConfig)
     .then((res) => {
       console.log(res); // here we should save the token
     });
@@ -77,7 +77,7 @@ export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
     resetToken,
   };
 
-  const response = axios.post(URL, JSON.stringify(data), axiosAppConfig)
+  const response = axios.post(`${URL}/password/reset`, JSON.stringify(data), axiosAppConfig)
     .then((res) => {
       console.log(res); // here we should save the token
     });
