@@ -25,10 +25,7 @@ export const signUp = (name, email, password) => async (dispatch) => {
     password,
   };
 
-  const response = axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => {
-      console.log(res); // here we should save the token
-    });
+  const response = axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig);
   dispatch({
     type: SIGN_UP,
     payload: response,
@@ -88,11 +85,14 @@ export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
 };
 
 // reducer
-export default function userReducer(state = [], action) {
-  if (action.type === SIGN_UP) {
-    return [
-      ...state,
-    ];
+export default function userReducer(state = {}, action) {
+  switch (action.type) {
+    default: return state;
+
+    case SIGN_UP:
+      return {
+        ...state,
+        token: action.payload.token,
+      };
   }
-  return state;
 }
