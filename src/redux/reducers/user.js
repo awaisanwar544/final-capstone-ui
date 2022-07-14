@@ -96,5 +96,9 @@ export default function userReducer(state = initialState, action = {}) {
     };
   }
 
+  if (action.type === LOG_OUT) {
+    return state;
+  }
+
   return state;
 }

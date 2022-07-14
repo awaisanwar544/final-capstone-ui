@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -24,6 +24,14 @@ function MobileMenu() {
       setMenuClass('w-6 h-6');
     }
   };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+    window.location.reload();
+  };
   return (
     <div>
       <button onClick={changeOpen} type="button" className={buttonClass} aria-controls="mobile-menu" aria-expanded="false">
@@ -35,31 +43,36 @@ function MobileMenu() {
           <NavLink
             exact
             to="/"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500"
+            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
           >
             <p>All Developers</p>
           </NavLink>
           <NavLink
             exact
             to="/reservations"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500"
+            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
           >
             <p>Manage Reservations</p>
           </NavLink>
           <NavLink
             exact
             to="/add-developer"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500"
+            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
           >
             <p>Add New Developer</p>
           </NavLink>
           <NavLink
             exact
             to="/delete-developer"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500"
+            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
           >
             <p>Delete Developer</p>
           </NavLink>
+          <div className="flex items-center justify-center pt-20">
+            <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-grey-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </div>

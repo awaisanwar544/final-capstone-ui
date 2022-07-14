@@ -9,7 +9,12 @@ import SplashPage from './pages/SplashPage';
 import AppRoutes from './components/AppRoutes';
 
 function App() {
-  const user = useState(localStorage.getItem('user') === true);
+  const user = localStorage.getItem('user');
+  const [splash, setSplash] = useState(!user);
+
+  const removeSplash = () => {
+    setSplash(false);
+  };
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -18,11 +23,11 @@ function App() {
   // }, []);
   return (
     <>
-      {!user
+      {splash
         ? (
           <>
             <Router>
-              <SplashPage />
+              <SplashPage removeSplash={removeSplash} />
             </Router>
           </>
         )

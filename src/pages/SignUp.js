@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 import { signUp } from '../redux/reducers/user';
@@ -7,8 +8,7 @@ import { signUp } from '../redux/reducers/user';
 function SignUp() {
   const dispatch = useDispatch();
   const newUser = useSelector((state) => state.user);
-
-  console.log(newUser);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,7 +19,10 @@ function SignUp() {
   };
 
   useEffect(() => {
-    localStorage.setItem('user', newUser);
+    if (Object.keys(newUser).length !== 0) {
+      localStorage.setItem('user', newUser);
+      navigate('/');
+    }
   }, [newUser]);
 
   return (
