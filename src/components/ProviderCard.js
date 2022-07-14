@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter, faGithub, faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
 
 function ProviderCard() {
+  const id = 1;
   return (
     <div className="flex flex-col mx-6 bg-custom-white-500">
       <div className="item w-auto h-40">
@@ -14,6 +17,13 @@ function ProviderCard() {
         <span className="text-custom-grey-500 select-none">..................</span>
         <p className="text-custom-grey-500">People that something</p>
       </div>
+      <Link
+        exact
+        to={`/developer/${id}`}
+        className="bg-custom-white-500 text-custom-grey-500 border text-center border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold m-2 py-2 px-4 rounded focus:outline-none"
+      >
+        <p>See Details</p>
+      </Link>
       <div className="item w-auto h-12">
         <ul className="flex w-52 justify-around">
           <li>

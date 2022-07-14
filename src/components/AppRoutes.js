@@ -18,6 +18,7 @@ import DeveloperDetailsPage from '../pages/DeveloperDetailsPage';
 function AppRoutes() {
   return (
     <Routes>
+      <Route path="*" element={<HomePage />} />
       <Route path="/" exact element={<HomePage />} />
       <Route path="/signup" exact element={<SignUp />} />
       <Route path="/signin" exact element={<SignIn />} />
@@ -25,7 +26,7 @@ function AppRoutes() {
       <Route path="/reservations" exact element={<MyReservations />} />
       <Route path="/add-developer" exact element={<AddDeveloper />} />
       <Route path="/delete-developer" exact element={<DeleteDeveloper />} />
-      <Route path="/developer" exact element={<DeveloperDetailsPage />} />
+      <Route path="/developer/:id" exact element={<DeveloperDetailsPage />} />
     </Routes>
   );
 }
