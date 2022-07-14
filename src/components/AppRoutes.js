@@ -12,7 +12,7 @@ import DeleteDeveloper from '../pages/DeleteDeveloper';
 
 import SignUp from '../pages/SignUp';
 import SignIn from '../pages/SignIn';
-import ForgotPassword from './ForgotPassword';
+import ForgotPassword from '../pages/ForgotPassword';
 import DeveloperDetailsPage from '../pages/DeveloperDetailsPage';
 
 function AppRoutes() {

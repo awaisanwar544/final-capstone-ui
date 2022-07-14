@@ -5,7 +5,7 @@ import {
 
 function ProviderCard() {
   return (
-    <div className="flex justify-around items-center mt-8 p-4 shadow-lg w-3/4 border-4 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl hover:scale-105">
+    <div className="flex justify-around items-center mt-8 p-4 shadow-lg w-3/4 border-4 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl">
       <div className="item w-auto h-20">
         <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src="https://w7.pngwing.com/pngs/905/43/png-transparent-management-professional-sales-business-service-lawyer-company-service-people-thumbnail.png" alt="Person" />
       </div>
@@ -32,6 +32,11 @@ function ProviderCard() {
             </a>
           </li>
         </ul>
+      </div>
+      <div className="flex items-center justify-center">
+        <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-red-500 hover:text-white hover:border-red-500 font-bold py-2 px-4 rounded focus:outline-none" type="button">
+          Delete
+        </button>
       </div>
     </div>
   );
