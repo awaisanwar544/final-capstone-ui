@@ -50,7 +50,6 @@ export const logIn = (email, password) => async (dispatch) => {
 };
 
 export const logOut = () => (
-  // here we should remove the user token from state
   { type: LOG_OUT }
 );
 
@@ -59,10 +58,8 @@ export const forgotPassword = (email) => async (dispatch) => {
     email,
   };
 
-  const response = axios.post(`${URL}/password/forgot`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => {
-      console.log(res); // here we should save the token
-    });
+  const response = await axios.post(`${URL}/password/forgot`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: FORGOT_PASSWORD,
     payload: response,
@@ -75,10 +72,8 @@ export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
     resetToken,
   };
 
-  const response = axios.post(`${URL}/password/reset`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => {
-      console.log(res); // here we should save the token
-    });
+  const response = await axios.post(`${URL}/password/reset`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: PASSWORD_RESET,
     payload: response,
@@ -95,6 +90,13 @@ export default function userReducer(state = initialState, action = {}) {
   }
 
   if (action.type === LOG_IN) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+
+  if (action.type === FORGOT_PASSWORD) {
     return {
       ...state,
       ...action.payload,

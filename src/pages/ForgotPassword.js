@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../assets/logo.png';
 
 import { forgotPassword } from '../redux/reducers/user';
 
 function ForgotPassword() {
   const dispatch = useDispatch();
+  const message = useSelector((state) => state.user.message);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -12,7 +13,8 @@ function ForgotPassword() {
     dispatch(forgotPassword(email));
   };
   return (
-    <div className="w-screen h-screen flex items-center bg-custom-green-500">
+    <div className="w-screen h-screen flex flex-col items-center justify-center bg-custom-green-500 space-y-10">
+      {message && <p className="text-custom-white-500">{`${message} Please Check your email to continue.`}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
