@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function ProviderDetails() {
   const location = useLocation();
   const provider = location.state;
-  console.log(provider);
   return (
     <div className="flex w-full h-1/3 jusitify-center content-center items-center">
       <div className="w-3/5">
@@ -24,9 +24,9 @@ function ProviderDetails() {
           <p>{provider.cost}</p>
         </div>
         <div className="flex my-12 self-end">
-          <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
+          <Link to="/reserve-developer" state={provider} exact className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
             Book Developer
-          </button>
+          </Link>
         </div>
       </div>
     </div>

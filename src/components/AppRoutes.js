@@ -15,6 +15,7 @@ import SignIn from '../pages/SignIn';
 import ForgotPassword from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
 import DeveloperDetailsPage from '../pages/DeveloperDetailsPage';
+import AddReservation from '../pages/AddReservation';
 
 function AppRoutes() {
   return (
@@ -29,6 +30,7 @@ function AppRoutes() {
       <Route path="/add-developer" exact element={<AddDeveloper />} />
       <Route path="/delete-developer" exact element={<DeleteDeveloper />} />
       <Route path="/developer/:id" exact element={<DeveloperDetailsPage />} />
+      <Route path="/reserve-developer" exact element={<AddReservation />} />
     </Routes>
   );
 }
