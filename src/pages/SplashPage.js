@@ -7,9 +7,6 @@ import { getProviders } from '../redux/reducers/providers';
 import logo from '../assets/logo.png';
 
 function SplashPage({ removeSplash }) {
-
-
-function SplashPage({ changeSplash }) {
   const dispatch = useDispatch();
 
   dispatch(getProviders());
