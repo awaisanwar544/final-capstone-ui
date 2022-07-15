@@ -62,7 +62,7 @@ function NewReservationForm() {
         </div>
         <div className="flex items-center justify-center">
           <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none" type="submit">
-            Add Developer
+            Hire Developer
           </button>
         </div>
       </form>
