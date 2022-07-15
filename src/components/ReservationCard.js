@@ -1,18 +1,26 @@
-function Reservation() {
+import PropTypes from 'prop-types';
+
+function Reservation({ reservationData }) {
   return (
-    <div className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl hover:scale-105">
+    <div className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div>
-        <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src="https://w7.pngwing.com/pngs/905/43/png-transparent-management-professional-sales-business-service-lawyer-company-service-people-thumbnail.png" alt="Person" />
+        <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src={reservationData.provider_image} alt={reservationData.provider_name} />
       </div>
       <div className="flex items-center">
         <div className="text-center">
-          <p>You reserved Person</p>
-          <p>From date to date</p>
+          <p className="flex justify-around">
+            You reserved:
+            <b>{reservationData.provider_name}</b>
+          </p>
+          <p>
+            {`From ${new Date(reservationData.start_date).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.start_date.split('').splice(8, 9).join('')}
+               to ${new Date(reservationData.end_date).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.end_date.split('').splice(8, 9).join('')}`}
+          </p>
           <p className="flex justify-around">
             Total cost:
-            <b>$1</b>
+            <b>{reservationData.total_cost}</b>
           </p>
-          <p className="text-custom-grey-500">(reserved on date)</p>
+          <p className="text-custom-grey-500">{`(Reserved on ${reservationData.created_at.slice(0, 10).split('-').reverse().join(' / ')})`}</p>
         </div>
       </div>
       <div className="flex items-center justify-center">
@@ -23,5 +31,18 @@ function Reservation() {
     </div>
   );
 }
+
+Reservation.propTypes = {
+  reservationData: PropTypes.shape({
+    id: PropTypes.number,
+    provider_id: PropTypes.number,
+    start_date: PropTypes.string,
+    end_date: PropTypes.string,
+    total_cost: PropTypes.string,
+    created_at: PropTypes.string,
+    provider_name: PropTypes.string,
+    provider_image: PropTypes.string,
+  }).isRequired,
+};
 
 export default Reservation;

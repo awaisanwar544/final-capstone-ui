@@ -10,7 +10,7 @@ function ProviderCard({ providerData }) {
   return (
     <div className="flex flex-col mx-6 bg-custom-white-500 hover:shadow-2xl hover:scale-105">
       <div className="item w-auto h-40">
-        <img className="w-40 h-40 m-auto object-contain rounded-full bg-custom-green-500" src={providerData.image} alt="Person" />
+        <img className="w-40 h-40 m-auto object-contain rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
       </div>
       <div className="item w-auto h-28 text-center flex flex-col justify-around">
         <h3>{providerData.name}</h3>

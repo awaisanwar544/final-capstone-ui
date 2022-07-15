@@ -6,7 +6,7 @@ const NEW_RESERVATION = 'NEW_RESERVATION';
 const DEL_RESERVATION = 'DEL_RESERVATION';
 
 const URL = 'https://bookdev-api.herokuapp.com/api/reservations';
-const USER_TOKEN = `BEARER ${JSON.parse(localStorage.getItem('user')).token}`;
+const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
 
 const axiosUserConfig = {
   headers: {
