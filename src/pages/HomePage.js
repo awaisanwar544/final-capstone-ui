@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { getProviders } from '../redux/reducers/providers';
+
 import NavigationBar from '../components/NavigationBar';
-
 import ProviderCard from '../components/ProviderCard';
-
 import MobileMenu from '../components/MobileMenu';
 
 function HomePage() {
+  const dispatch = useDispatch();
+  const providers = useSelector((state) => state.providers, shallowEqual);
+
+  useEffect(() => {
+    dispatch(getProviders());
+  }, []);
+
   return (
     <div className="flex">
       <MobileMenu />
@@ -15,12 +24,9 @@ function HomePage() {
           <p className="text-xl">Please select a developer from the List</p>
         </div>
         <div className="w-full max-h-screen flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
+          {
+            providers.map((item) => <ProviderCard key={item.id} providerData={item} />)
+          }
         </div>
       </div>
     </div>

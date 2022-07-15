@@ -7,7 +7,7 @@ import { logIn } from '../redux/reducers/user';
 
 function SignIn() {
   const dispatch = useDispatch();
-  const userToken = useSelector((state) => state.user.token);
+  const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -18,11 +18,11 @@ function SignIn() {
   };
 
   useEffect(() => {
-    if (userToken) {
-      localStorage.setItem('user', JSON.stringify(userToken));
+    if (user.token) {
+      localStorage.setItem('user', JSON.stringify(user));
       navigate('/');
     }
-  }, [userToken]);
+  }, [user]);
   return (
     <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>

@@ -15,7 +15,8 @@ const axiosAppConfig = {
 
 // action creator
 export const getProviders = () => async (dispatch) => {
-  const response = axios.get(`${URL}/providers`, axiosAppConfig);
+  const response = await axios.get(`${URL}/providers`, axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: GET_PROVIDERS,
     payload: response,
@@ -23,13 +24,13 @@ export const getProviders = () => async (dispatch) => {
 };
 
 // reducer
-export default function providersReducer(state = {}, action) {
+export default function providersReducer(state = [], action) {
   switch (action.type) {
     default: return state;
 
     case GET_PROVIDERS:
-      return {
-        ...state,
-      };
+      return [
+        ...action.payload,
+      ];
   }
 }
