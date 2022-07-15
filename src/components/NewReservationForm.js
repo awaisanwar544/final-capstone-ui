@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { newReservations } from '../redux/reducers/reservations';
 
 function NewReservationForm() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const provider = location.state;
+  const navigate = useNavigate();
 
   const [totalCost, setTotalCost] = useState(0);
   const [startDate, setStartDate] = useState(null);
@@ -28,7 +34,17 @@ function NewReservationForm() {
       return numberOfDays * Math.floor(provider.cost);
     }
 
-    return 'invalid Selection';
+    return null;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (totalCost) {
+      dispatch(newReservations(provider.id, startDate, endDate, totalCost))
+        .then(() => {
+          navigate('/reservations');
+        });
+    }
   };
 
   useEffect(() => {
@@ -37,7 +53,7 @@ function NewReservationForm() {
   return (
     <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
       <h1 className="text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
-      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto">
+      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
         <div className="flex flex-col space-y-6">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -55,7 +71,7 @@ function NewReservationForm() {
             <div className="block text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
               Total Cost:
               <span className="text-custom-green-500">
-                {` ${totalCost} $`}
+                { totalCost ? ` ${totalCost} $` : ' Invalid Dates' }
               </span>
             </div>
           </div>

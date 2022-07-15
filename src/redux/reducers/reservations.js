@@ -6,7 +6,7 @@ const NEW_RESERVATION = 'NEW_RESERVATION';
 const DEL_RESERVATION = 'DEL_RESERVATION';
 
 const URL = 'https://bookdev-api.herokuapp.com/api/reservations';
-const USER_TOKEN = `BEARER ${localStorage.getItem('user').token}`;
+const USER_TOKEN = `BEARER ${JSON.parse(localStorage.getItem('user')).token}`;
 
 const axiosUserConfig = {
   headers: {
@@ -17,7 +17,7 @@ const axiosUserConfig = {
 
 // action creatorS
 export const getReservations = () => async (dispatch) => {
-  const response = axios.get(URL, axiosUserConfig);
+  const response = await axios.get(URL, axiosUserConfig);
   dispatch({
     type: GET_RESERVATIONS,
     payload: response,
@@ -31,7 +31,6 @@ export const newReservations = (providerId, startDate, endDate, totalCost) => as
     end_date: endDate,
     total_cost: totalCost,
   };
-
   const response = await axios
     .post(URL, JSON.stringify(data), axiosUserConfig)
     .then((res) => res.data);
