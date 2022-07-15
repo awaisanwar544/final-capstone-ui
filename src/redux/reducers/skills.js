@@ -15,7 +15,8 @@ const axiosAppConfig = {
 
 // action creator
 export const getSkills = () => async (dispatch) => {
-  const response = axios.get(`${URL}/skills`, axiosAppConfig);
+  const response = await axios.get(`${URL}/skills`, axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: GET_SKILLS,
     payload: response,
@@ -23,13 +24,13 @@ export const getSkills = () => async (dispatch) => {
 };
 
 // reducer
-export default function skillsReducer(state = {}, action) {
+export default function skillsReducer(state = [], action) {
   switch (action.type) {
     default: return state;
 
     case GET_SKILLS:
-      return {
-        ...state,
-      };
+      return [
+        ...action.payload,
+      ];
   }
 }

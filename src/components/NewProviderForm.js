@@ -1,8 +1,49 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { getSkills } from '../redux/reducers/skills';
+import { newProviders } from '../redux/reducers/providers';
+
 function NewProviderForm() {
+  const dispatch = useDispatch();
+  const skills = useSelector((state) => state.skills);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const checkedBoxes = document.querySelectorAll('input[name=skills]:checked');
+    const skills = Array.prototype.slice.call(checkedBoxes).map((item) => item.value);
+    const name = event.target.querySelector('#name').value;
+    const cost = event.target.querySelector('#rate').value;
+    const image = event.target.querySelector('#profile-image').files[0];
+    const bio = event.target.querySelector('#bio').value;
+    const githubProfile = event.target.querySelector('#github').value;
+    const linkedinProfile = event.target.querySelector('#linkedin').value;
+    const twitterProfile = event.target.querySelector('#twitter').value;
+
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('name', name);
+    formData.append('cost', cost);
+    formData.append('bio', bio);
+    formData.append('skills[]', skills);
+    formData.append('github_profile', githubProfile);
+    formData.append('linkedin_profile', linkedinProfile);
+    formData.append('twitter_profile', twitterProfile);
+
+    dispatch(newProviders(formData))
+      .then(() => {
+        navigate('/');
+      });
+  };
+  useEffect(() => {
+    dispatch(getSkills());
+  }, []);
   return (
     <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
       <h1 className="text-4xl text-custom-grey-500">Add New Developer</h1>
-      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto">
+      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
         <div className="flex space-x-10">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -33,7 +74,14 @@ function NewProviderForm() {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="skills">
               Skills
-              <textarea type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" rows="5" cols="50" id="skills" placeholder="Add one skill per line" />
+              <br />
+              {skills.map((skill) => (
+                <div key={skill.id}>
+                  <input type="checkbox" id={`skill-${skill.id}`} name="skills" value={skill.name} />
+                  {` ${skill.name}`}
+                  <br />
+                </div>
+              ))}
             </label>
           </div>
         </div>
@@ -59,7 +107,7 @@ function NewProviderForm() {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
+          <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="submit">
             Add Developer
           </button>
         </div>
