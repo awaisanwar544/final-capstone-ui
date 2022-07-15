@@ -20,7 +20,7 @@ function SignUp() {
 
   useEffect(() => {
     if (Object.keys(newUser).length !== 0) {
-      localStorage.setItem('user', newUser);
+      localStorage.setItem('user', JSON.stringify(newUser));
       navigate('/');
     }
   }, [newUser]);

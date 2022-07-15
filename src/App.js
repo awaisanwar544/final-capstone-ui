@@ -9,7 +9,8 @@ import SplashPage from './pages/SplashPage';
 import AppRoutes from './components/AppRoutes';
 
 function App() {
-  const user = localStorage.getItem('user');
+  const localUser = localStorage.getItem('user');
+  const user = JSON.parse(localUser);
   const [splash, setSplash] = useState(!user);
 
   const removeSplash = () => {

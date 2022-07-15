@@ -41,10 +41,8 @@ export const logIn = (email, password) => async (dispatch) => {
     password,
   };
 
-  const response = axios.post(`${URL}/user`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => {
-      console.log(res); // here we should save the token
-    });
+  const response = await axios.post(`${URL}/user`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => res.data);
   dispatch({
     type: LOG_IN,
     payload: response,
@@ -90,6 +88,13 @@ export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
 // reducer
 export default function userReducer(state = initialState, action = {}) {
   if (action.type === SIGN_UP) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+
+  if (action.type === LOG_IN) {
     return {
       ...state,
       ...action.payload,
