@@ -24,7 +24,7 @@ function AppRoutes() {
       <Route path="/signup" exact element={<SignUp />} />
       <Route path="/signin" exact element={<SignIn />} />
       <Route path="/forgot-password" exact element={<ForgotPassword />} />
-      <Route path="/reset-password" exact element={<ResetPassword />} />
+      <Route path="/resetpassword" exact element={<ResetPassword />} />
       <Route path="/reservations" exact element={<MyReservations />} />
       <Route path="/add-developer" exact element={<AddDeveloper />} />
       <Route path="/delete-developer" exact element={<DeleteDeveloper />} />

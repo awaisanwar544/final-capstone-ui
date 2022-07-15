@@ -68,8 +68,8 @@ export const forgotPassword = (email) => async (dispatch) => {
 
 export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
   const data = {
-    newPassword,
-    resetToken,
+    new_password: newPassword,
+    reset_token: resetToken,
   };
 
   const response = await axios.post(`${URL}/password/reset`, JSON.stringify(data), axiosAppConfig)
@@ -97,6 +97,13 @@ export default function userReducer(state = initialState, action = {}) {
   }
 
   if (action.type === FORGOT_PASSWORD) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+
+  if (action.type === PASSWORD_RESET) {
     return {
       ...state,
       ...action.payload,

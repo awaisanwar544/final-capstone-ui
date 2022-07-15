@@ -11,7 +11,8 @@ import AppRoutes from './components/AppRoutes';
 function App() {
   const localUser = localStorage.getItem('user');
   const user = JSON.parse(localUser);
-  const [splash, setSplash] = useState(!user);
+  const renderSplash = (window.location.pathname === '/resetpassword') ? false : !user;
+  const [splash, setSplash] = useState(renderSplash);
 
   const removeSplash = () => {
     setSplash(false);
