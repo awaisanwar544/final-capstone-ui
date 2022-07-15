@@ -1,15 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import logo from '../assets/logo.png';
 
 import { getProviders } from '../redux/reducers/providers';
+
+import logo from '../assets/logo.png';
+
+function SplashPage({ removeSplash }) {
+
 
 function SplashPage({ changeSplash }) {
   const dispatch = useDispatch();
 
   dispatch(getProviders());
-
   return (
     <div className="flex flex-col mt-20 items-center">
       <div className="flex w-full p-10 justify-center">
@@ -18,10 +21,10 @@ function SplashPage({ changeSplash }) {
         </a>
       </div>
       <div className="flex items-center justify-center space-x-3">
-        <Link to="/signin" exact onClick={changeSplash} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
+        <Link to="/signin" exact onClick={removeSplash} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
           Sign In
         </Link>
-        <Link to="signup" exact onClick={changeSplash} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
+        <Link to="signup" exact onClick={removeSplash} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
           Register
         </Link>
       </div>
@@ -30,7 +33,7 @@ function SplashPage({ changeSplash }) {
 }
 
 SplashPage.propTypes = {
-  changeSplash: PropTypes.func.isRequired,
+  removeSplash: PropTypes.func.isRequired,
 };
 
 export default SplashPage;

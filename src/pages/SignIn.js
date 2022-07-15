@@ -1,11 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 import { logIn } from '../redux/reducers/user';
 
 function SignIn() {
   const dispatch = useDispatch();
+  const userToken = useSelector((state) => state.user.token);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,6 +17,12 @@ function SignIn() {
     dispatch(logIn(email, password));
   };
 
+  useEffect(() => {
+    if (userToken) {
+      localStorage.setItem('user', JSON.stringify(userToken));
+      navigate('/');
+    }
+  }, [userToken]);
   return (
     <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>

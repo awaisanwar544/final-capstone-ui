@@ -9,9 +9,12 @@ import SplashPage from './pages/SplashPage';
 import AppRoutes from './components/AppRoutes';
 
 function App() {
-  const [splash, setSplash] = useState(true);
+  const localUser = localStorage.getItem('user');
+  const user = JSON.parse(localUser);
+  const renderSplash = (window.location.pathname === '/resetpassword') ? false : !user;
+  const [splash, setSplash] = useState(renderSplash);
 
-  const changeSplash = () => {
+  const removeSplash = () => {
     setSplash(false);
   };
 
@@ -26,7 +29,7 @@ function App() {
         ? (
           <>
             <Router>
-              <SplashPage changeSplash={changeSplash} />
+              <SplashPage removeSplash={removeSplash} />
             </Router>
           </>
         )

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter, faFacebook, faGoogle, faYoutube, faPinterest,
@@ -8,6 +8,14 @@ import logo from '../assets/logo.png';
 function NavigationBar() {
   const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500';
   const activeClassName = 'flex flex-col bg-custom-green-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+    window.location.reload();
+  };
   return (
     <div className="hidden lg:flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
       <a href="/" className="w-24">
@@ -44,7 +52,7 @@ function NavigationBar() {
         </NavLink>
       </div>
       <div className="flex items-center justify-center mt-20">
-        <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
+        <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
           Logout
         </button>
       </div>

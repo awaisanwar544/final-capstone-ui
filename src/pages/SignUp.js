@@ -1,10 +1,14 @@
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 import { signUp } from '../redux/reducers/user';
 
 function SignUp() {
   const dispatch = useDispatch();
+  const newUser = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,6 +17,14 @@ function SignUp() {
     const password = event.target[2].value;
     dispatch(signUp(name, email, password));
   };
+
+  useEffect(() => {
+    if (Object.keys(newUser).length !== 0) {
+      localStorage.setItem('user', JSON.stringify(newUser));
+      navigate('/');
+    }
+  }, [newUser]);
+
   return (
     <div className="w-screen h-screen flex items-center bg-custom-green-500">
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
