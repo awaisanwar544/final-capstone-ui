@@ -5,12 +5,17 @@ import { delReservations } from '../redux/reducers/reservations';
 function Reservation({ reservationData }) {
   const dispatch = useDispatch();
 
+  const deleteElement = () => {
+    document.getElementById(`reservation-${reservationData.id}`).remove();
+  };
+
   const deleteReservation = () => {
     dispatch(delReservations(reservationData.id));
+    deleteElement();
   };
 
   return (
-    <div className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
+    <div id={`reservation-${reservationData.id}`} className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div>
         <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src={reservationData.provider_image} alt={reservationData.provider_name} />
       </div>
