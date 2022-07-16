@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { getProviders } from '../redux/reducers/providers';
 
@@ -9,9 +9,13 @@ import MobileMenu from '../components/MobileMenu';
 function HomePage() {
   const dispatch = useDispatch();
   const providers = useSelector((state) => state.providers, shallowEqual);
+  const [message, setMessage] = useState('Currently there is no developer available');
 
   useEffect(() => {
-    dispatch(getProviders());
+    dispatch(getProviders())
+      .catch(() => {
+        setMessage('Something went wrong. Please try relaoding page');
+      });
   }, []);
 
   return (
@@ -24,9 +28,9 @@ function HomePage() {
           <p className="text-xl">Please select a developer from the List</p>
         </div>
         <div className="w-full max-h-screen flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
-          {
-            providers.map((item) => <ProviderCard key={item.id} providerData={item} />)
-          }
+          { providers.length
+            ? (providers.map((item) => <ProviderCard key={item.id} providerData={item} />))
+            : <p className="text-red-500">{message}</p> }
         </div>
       </div>
     </div>

@@ -47,7 +47,7 @@ function SignIn() {
           <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="submit">
             Sign In
           </button>
-          <Link to="/forgot-password" exact className="inline-block align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
+          <Link to="/forgot-password" exact="true" className="inline-block align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
             Forgot Password?
           </Link>
         </div>

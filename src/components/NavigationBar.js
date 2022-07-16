@@ -23,28 +23,28 @@ function NavigationBar() {
       </a>
       <div className="w-full pl-10 mt-20 space-y-1">
         <NavLink
-          exact
+          exact="true"
           to="/"
           className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
         >
           <p>All Developers</p>
         </NavLink>
         <NavLink
-          exact
+          exact="true"
           to="/reservations"
           className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
         >
           <p>Manage Reservations</p>
         </NavLink>
         <NavLink
-          exact
+          exact="true"
           to="/add-developer"
           className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
         >
           <p>Add New Developer</p>
         </NavLink>
         <NavLink
-          exact
+          exact="true"
           to="/delete-developer"
           className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
         >

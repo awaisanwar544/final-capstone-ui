@@ -25,17 +25,20 @@ const axiosUserConfig = {
 
 // action creator
 export const getProviders = () => async (dispatch) => {
-  const response = await axios.get(`${URL}/providers`, axiosAppConfig)
-    .then((res) => res.data);
-  dispatch({
-    type: GET_PROVIDERS,
-    payload: response,
-  });
+  await axios.get(`${URL}/providers`, axiosAppConfig)
+    .then((res) => {
+      dispatch({
+        type: GET_PROVIDERS,
+        payload: res.data,
+      });
+    })
+    .catch((error) => error);
 };
 
 export const newProviders = (data) => async (dispatch) => {
   const response = await axios.post(`${URL}/providers`, data, axiosUserConfig)
-    .then((res) => res.data);
+    .then((res) => res.data)
+    .catch((error) => error);
   dispatch({
     type: NEW_PROVIDERS,
     payload: response,
@@ -44,7 +47,8 @@ export const newProviders = (data) => async (dispatch) => {
 
 export const delProviders = (id) => async (dispatch) => {
   const response = await axios.delete(`${URL}/providers/${id}`, axiosUserConfig)
-    .then((res) => res.data);
+    .then((res) => res.data)
+    .catch((error) => error);
   dispatch({
     type: DEL_PROVIDER,
     payload: response,
