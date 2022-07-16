@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 import { forgotPassword } from '../redux/reducers/user';
@@ -32,6 +33,9 @@ function ForgotPassword() {
             Submit
           </button>
         </div>
+        <Link to="/signin" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
+          Sign in here
+        </Link>
       </form>
     </div>
   );

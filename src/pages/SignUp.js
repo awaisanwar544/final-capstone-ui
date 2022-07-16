@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 import { signUp } from '../redux/reducers/user';
@@ -70,6 +70,11 @@ function SignUp() {
             Sign Up
           </button>
         </div>
+        <Link to="/signin" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
+          Already have an account?
+          <br />
+          Sign in now!
+        </Link>
       </form>
     </div>
   );

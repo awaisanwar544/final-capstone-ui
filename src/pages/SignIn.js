@@ -51,6 +51,11 @@ function SignIn() {
             Forgot Password?
           </Link>
         </div>
+        <Link to="/signup" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
+          Do not have an account?
+          <br />
+          Register now!
+        </Link>
       </form>
     </div>
   );
