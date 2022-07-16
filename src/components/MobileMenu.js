@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function MobileMenu() {
@@ -10,6 +10,17 @@ function MobileMenu() {
 
   const changeOpen = () => {
     setOpen(!open);
+  };
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+    window.location.reload();
+  };
+
+  useEffect(() => {
     if (open) {
       setNavClass('block h-screen w-screen bg-custom-green-500 absolute z-10 top-0');
       setButtonClass('absolute top-0 right-0 items-center m-5 p-2 ml-3 text-sm text-custom-white-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-custom-white-500 z-20');
@@ -23,15 +34,7 @@ function MobileMenu() {
       setButtonClass('m-5 inline-flex items-center p-2 ml-3 text-sm text-custom-green-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-custom-green-500');
       setMenuClass('w-6 h-6');
     }
-  };
-
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    localStorage.removeItem('user');
-    navigate('/');
-    window.location.reload();
-  };
+  }, [open]);
   return (
     <div>
       <button onClick={changeOpen} type="button" className={buttonClass} aria-controls="mobile-menu" aria-expanded="false">
