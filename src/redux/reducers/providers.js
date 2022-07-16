@@ -3,10 +3,11 @@ import axios from 'axios';
 // action types
 const GET_PROVIDERS = 'GET_PROVIDERS';
 const NEW_PROVIDERS = 'NEW_PROVIDERS';
+const DEL_PROVIDER = 'DEL_PROVIDER';
 
 const URL = 'https://bookdev-api.herokuapp.com/api';
 const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
-const USER_TOKEN = `BEARER ${JSON.parse(localStorage.getItem('user')).token}`;
+const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
 
 const axiosAppConfig = {
   headers: {
@@ -37,6 +38,15 @@ export const newProviders = (data) => async (dispatch) => {
     .then((res) => res.data);
   dispatch({
     type: NEW_PROVIDERS,
+    payload: response,
+  });
+};
+
+export const delProviders = (id) => async (dispatch) => {
+  const response = await axios.delete(`${URL}/providers/${id}`, axiosUserConfig)
+    .then((res) => res.data);
+  dispatch({
+    type: DEL_PROVIDER,
     payload: response,
   });
 };

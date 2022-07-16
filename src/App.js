@@ -18,11 +18,6 @@ function App() {
     setSplash(false);
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setSplash(false);
-  //   }, 8000);
-  // }, []);
   return (
     <>
       {splash

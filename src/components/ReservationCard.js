@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { delReservations } from '../redux/reducers/reservations';
 
 function Reservation({ reservationData }) {
+  const dispatch = useDispatch();
+
+  const deleteReservation = () => {
+    dispatch(delReservations(reservationData.id));
+  };
+
   return (
     <div className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div>
@@ -24,7 +32,7 @@ function Reservation({ reservationData }) {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-red-500 hover:text-white hover:border-red-500 font-bold py-2 px-4 rounded focus:outline-none" type="button">
+        <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-red-500 hover:text-white hover:border-red-500 font-bold py-2 px-4 rounded focus:outline-none" type="button" onClick={deleteReservation}>
           Delete
         </button>
       </div>

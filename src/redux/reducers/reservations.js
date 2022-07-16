@@ -17,7 +17,8 @@ const axiosUserConfig = {
 
 // action creatorS
 export const getReservations = () => async (dispatch) => {
-  const response = await axios.get(URL, axiosUserConfig);
+  const response = await axios.get(URL, axiosUserConfig)
+    .then((res) => res.data);
   dispatch({
     type: GET_RESERVATIONS,
     payload: response,
@@ -42,7 +43,7 @@ export const newReservations = (providerId, startDate, endDate, totalCost) => as
 };
 
 export const delReservations = (id) => async (dispatch) => {
-  const response = await axios.post(URL, JSON.stringify(id), axiosUserConfig)
+  const response = await axios.delete(`${URL}/${id}`, axiosUserConfig)
     .then((res) => res.data);
 
   dispatch({
@@ -58,7 +59,7 @@ export default function reservationsReducer(state = [], action) {
 
     case GET_RESERVATIONS:
       return [
-        action.payload,
+        ...action.payload,
       ];
   }
 }
