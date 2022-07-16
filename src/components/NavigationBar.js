@@ -6,6 +6,7 @@ import {
 import logo from '../assets/logo.png';
 
 function NavigationBar() {
+  const user = JSON.parse(localStorage.getItem('user'));
   const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500';
   const activeClassName = 'flex flex-col bg-custom-green-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
 
@@ -36,20 +37,25 @@ function NavigationBar() {
         >
           <p>Manage Reservations</p>
         </NavLink>
-        <NavLink
-          exact="true"
-          to="/add-developer"
-          className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-        >
-          <p>Add New Developer</p>
-        </NavLink>
-        <NavLink
-          exact="true"
-          to="/delete-developer"
-          className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-        >
-          <p>Delete Developer</p>
-        </NavLink>
+        {user.admin
+          ? (
+            <>
+              <NavLink
+                exact="true"
+                to="/add-developer"
+                className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+              >
+                <p>Add New Developer</p>
+              </NavLink>
+              <NavLink
+                exact="true"
+                to="/delete-developer"
+                className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+              >
+                <p>Delete Developer</p>
+              </NavLink>
+            </>
+          ) : ''}
       </div>
       <div className="flex items-center justify-center mt-20">
         <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">

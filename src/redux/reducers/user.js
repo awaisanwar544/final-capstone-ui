@@ -91,7 +91,6 @@ export default function userReducer(state = initialState, action = {}) {
 
   if (action.type === LOG_IN) {
     return {
-      ...state,
       ...action.payload,
     };
   }

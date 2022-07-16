@@ -6,17 +6,16 @@ const NEW_RESERVATION = 'NEW_RESERVATION';
 const DEL_RESERVATION = 'DEL_RESERVATION';
 
 const URL = 'https://bookdev-api.herokuapp.com/api/reservations';
-const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
-
-const axiosUserConfig = {
-  headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
-    Authorization: USER_TOKEN,
-  },
-};
 
 // action creatorS
 export const getReservations = () => async (dispatch) => {
+  const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
+  const axiosUserConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: USER_TOKEN,
+    },
+  };
   const response = await axios.get(URL, axiosUserConfig)
     .then((res) => res.data);
   dispatch({
@@ -26,6 +25,13 @@ export const getReservations = () => async (dispatch) => {
 };
 
 export const newReservations = (providerId, startDate, endDate, totalCost) => async (dispatch) => {
+  const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
+  const axiosUserConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: USER_TOKEN,
+    },
+  };
   const data = {
     provider_id: providerId,
     start_date: startDate,
@@ -33,7 +39,7 @@ export const newReservations = (providerId, startDate, endDate, totalCost) => as
     total_cost: totalCost,
   };
   const response = await axios
-    .post(URL, JSON.stringify(data), axiosUserConfig)
+    .post(URL, data, axiosUserConfig)
     .then((res) => res.data);
 
   dispatch({
@@ -43,6 +49,13 @@ export const newReservations = (providerId, startDate, endDate, totalCost) => as
 };
 
 export const delReservations = (id) => async (dispatch) => {
+  const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
+  const axiosUserConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: USER_TOKEN,
+    },
+  };
   const response = await axios.delete(`${URL}/${id}`, axiosUserConfig)
     .then((res) => res.data);
 

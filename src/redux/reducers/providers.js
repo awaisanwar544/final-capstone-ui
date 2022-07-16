@@ -7,19 +7,11 @@ const DEL_PROVIDER = 'DEL_PROVIDER';
 
 const URL = 'https://bookdev-api.herokuapp.com/api';
 const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
-const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
 
 const axiosAppConfig = {
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
     Authorization: APP_TOKEN,
-  },
-};
-
-const axiosUserConfig = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    Authorization: USER_TOKEN,
   },
 };
 
@@ -36,6 +28,13 @@ export const getProviders = () => async (dispatch) => {
 };
 
 export const newProviders = (data) => async (dispatch) => {
+  const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
+  const axiosUserConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: USER_TOKEN,
+    },
+  };
   const response = await axios.post(`${URL}/providers`, data, axiosUserConfig)
     .then((res) => res.data)
     .catch((error) => error);
@@ -46,6 +45,13 @@ export const newProviders = (data) => async (dispatch) => {
 };
 
 export const delProviders = (id) => async (dispatch) => {
+  const USER_TOKEN = `BEARER ${localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).token}`;
+  const axiosUserConfig = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: USER_TOKEN,
+    },
+  };
   const response = await axios.delete(`${URL}/providers/${id}`, axiosUserConfig)
     .then((res) => res.data)
     .catch((error) => error);

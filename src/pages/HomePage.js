@@ -10,12 +10,11 @@ import MobileMenu from '../components/MobileMenu';
 function HomePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const localUser = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user'));
   const providers = useSelector((state) => state.providers, shallowEqual);
   const [message, setMessage] = useState('Currently there is no developer available');
-
   useEffect(() => {
-    if (!localUser) {
+    if (!user) {
       navigate('/signin');
     }
     dispatch(getProviders())

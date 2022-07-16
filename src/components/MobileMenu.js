@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function MobileMenu() {
+  const user = JSON.parse(localStorage.getItem('user'));
   const [open, setOpen] = useState(false);
   const [crossClass, setCrossClass] = useState('hidden');
   const [menuClass, setMenuClass] = useState('w-6 h-6 z-20');
@@ -57,20 +58,25 @@ function MobileMenu() {
           >
             <p>Manage Reservations</p>
           </NavLink>
-          <NavLink
-            exact="true"
-            to="/add-developer"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
-          >
-            <p>Add New Developer</p>
-          </NavLink>
-          <NavLink
-            exact="true"
-            to="/delete-developer"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
-          >
-            <p>Delete Developer</p>
-          </NavLink>
+          {user.admin
+            ? (
+              <>
+                <NavLink
+                  exact="true"
+                  to="/add-developer"
+                  className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+                >
+                  <p>Add New Developer</p>
+                </NavLink>
+                <NavLink
+                  exact="true"
+                  to="/delete-developer"
+                  className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+                >
+                  <p>Delete Developer</p>
+                </NavLink>
+              </>
+            ) : ''}
           <div className="flex items-center justify-center pt-20">
             <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-grey-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
               Logout
