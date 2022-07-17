@@ -1,11 +1,12 @@
 import axios from 'axios';
+import getURL from '../../util/getURL';
 
 // action types
 const GET_RESERVATIONS = 'GET_RESERVATIONS';
 const NEW_RESERVATION = 'NEW_RESERVATION';
 const DEL_RESERVATION = 'DEL_RESERVATION';
 
-const URL = 'https://bookdev-api.herokuapp.com/api/reservations';
+const URL = getURL();
 
 // action creatorS
 export const getReservations = () => async (dispatch) => {
@@ -16,7 +17,7 @@ export const getReservations = () => async (dispatch) => {
       Authorization: USER_TOKEN,
     },
   };
-  const response = await axios.get(URL, axiosUserConfig)
+  const response = await axios.get(`${URL}/reservations`, axiosUserConfig)
     .then((res) => res.data);
   dispatch({
     type: GET_RESERVATIONS,
@@ -39,7 +40,7 @@ export const newReservations = (providerId, startDate, endDate, totalCost) => as
     total_cost: totalCost,
   };
   const response = await axios
-    .post(URL, data, axiosUserConfig)
+    .post(`${URL}/reservations`, data, axiosUserConfig)
     .then((res) => res.data);
 
   dispatch({
@@ -56,7 +57,7 @@ export const delReservations = (id) => async (dispatch) => {
       Authorization: USER_TOKEN,
     },
   };
-  const response = await axios.delete(`${URL}/${id}`, axiosUserConfig)
+  const response = await axios.delete(`${URL}/reservations/${id}`, axiosUserConfig)
     .then((res) => res.data);
 
   dispatch({

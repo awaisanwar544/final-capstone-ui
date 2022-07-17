@@ -1,12 +1,14 @@
 import axios from 'axios';
+import getToken from '../../util/getToken';
+import getURL from '../../util/getURL';
 
 // action types
 const GET_PROVIDERS = 'GET_PROVIDERS';
 const NEW_PROVIDERS = 'NEW_PROVIDERS';
 const DEL_PROVIDER = 'DEL_PROVIDER';
 
-const URL = 'https://bookdev-api.herokuapp.com/api';
-const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
+const URL = getURL();
+const APP_TOKEN = getToken();
 
 const axiosAppConfig = {
   headers: {

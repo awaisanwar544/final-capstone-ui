@@ -1,9 +1,10 @@
 import axios from 'axios';
+import getURL from '../../util/getURL';
 
 // action types
 const GET_SKILLS = 'GET_SKILLS';
 
-const URL = 'https://bookdev-api.herokuapp.com/api';
+const URL = getURL();
 const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
 
 const axiosAppConfig = {

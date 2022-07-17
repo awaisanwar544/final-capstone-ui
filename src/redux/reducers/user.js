@@ -1,4 +1,6 @@
 import axios from 'axios';
+import getToken from '../../util/getToken';
+import getURL from '../../util/getURL';
 
 // action types
 const SIGN_UP = 'SIGN_UP';
@@ -7,8 +9,8 @@ const LOG_OUT = 'LOG_OUT';
 const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 const PASSWORD_RESET = 'PASSWORD_RESET';
 
-const URL = 'https://bookdev-api.herokuapp.com/api';
-const APP_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.IkJvb2tEZXYi.-8n7cJLfletMmFvAzpRHluHSwl61sR8ULl9p_QwQBNY';
+const URL = getURL();
+const APP_TOKEN = getToken();
 
 const initialState = {};
 
