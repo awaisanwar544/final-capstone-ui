@@ -17,14 +17,13 @@ const axiosAppConfig = {
 
 // action creator
 export const getProviders = () => async (dispatch) => {
-  await axios.get(`${URL}/providers`, axiosAppConfig)
-    .then((res) => {
-      dispatch({
-        type: GET_PROVIDERS,
-        payload: res.data,
-      });
-    })
+  const response = await axios.get(`${URL}/providers`, axiosAppConfig)
+    .then((res) => res.data)
     .catch((error) => error);
+  dispatch({
+    type: GET_PROVIDERS,
+    payload: response,
+  });
 };
 
 export const newProviders = (data) => async (dispatch) => {
@@ -67,8 +66,6 @@ export default function providersReducer(state = [], action) {
     default: return state;
 
     case GET_PROVIDERS:
-      return [
-        ...action.payload,
-      ];
+      return action.payload;
   }
 }

@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { newReservations } from '../redux/reducers/reservations';
+import { getProviders } from '../redux/reducers/providers';
 
 function NewReservationForm() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const provider = location.state;
+  const { id } = useParams();
+  const providers = useSelector((state) => state.providers);
+  const provider = providers.filter((item) => item.id === Number(id))[0];
   const navigate = useNavigate();
 
   const [totalCost, setTotalCost] = useState(0);
@@ -50,39 +52,49 @@ function NewReservationForm() {
   useEffect(() => {
     setTotalCost(calculateTotalCost);
   }, [startDate, endDate]);
+  useEffect(() => {
+    if (providers.length === 0) {
+      dispatch(getProviders());
+    }
+  }, []);
   return (
-    <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
-      <h1 className="text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
-      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
-        <div className="flex flex-col space-y-6">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-              Start Date
-              <input onChange={changeStartDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="date" type="date" required />
-            </label>
+    <>
+      {provider
+        ? (
+          <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
+            <h1 className="text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
+            <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
+              <div className="flex flex-col space-y-6">
+                <div className="mb-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                    Start Date
+                    <input onChange={changeStartDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="date" type="date" required />
+                  </label>
+                </div>
+                <div className="mb-6">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
+                    End Date
+                    <input onChange={changeEndDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="date" required />
+                  </label>
+                </div>
+                <div className="mb-4">
+                  <div className="block text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
+                    Total Cost:
+                    <span className="text-custom-green-500">
+                      { totalCost ? ` ${totalCost} $` : ' Invalid Dates' }
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none" type="submit">
+                  Hire Developer
+                </button>
+              </div>
+            </form>
           </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
-              End Date
-              <input onChange={changeEndDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="date" required />
-            </label>
-          </div>
-          <div className="mb-4">
-            <div className="block text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
-              Total Cost:
-              <span className="text-custom-green-500">
-                { totalCost ? ` ${totalCost} $` : ' Invalid Dates' }
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center justify-center">
-          <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none" type="submit">
-            Hire Developer
-          </button>
-        </div>
-      </form>
-    </div>
+        ) : 'Wait a moment while we fetch data'}
+    </>
   );
 }
 

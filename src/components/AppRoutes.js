@@ -30,7 +30,7 @@ function AppRoutes() {
       <Route path="/add-developer" exact element={<AddDeveloper />} />
       <Route path="/delete-developer" exact element={<DeleteDeveloper />} />
       <Route path="/developer/:id" exact element={<DeveloperDetailsPage />} />
-      <Route path="/reserve-developer" exact element={<AddReservation />} />
+      <Route path="/:id/reserve-developer" exact element={<AddReservation />} />
     </Routes>
   );
 }

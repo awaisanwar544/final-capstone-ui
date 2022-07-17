@@ -13,6 +13,10 @@ function MobileMenu() {
     setOpen(!open);
   };
 
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -45,6 +49,7 @@ function MobileMenu() {
       <div className={navClass}>
         <div className="w-full mt-20 space-y-1">
           <NavLink
+            onClick={closeMenu}
             exact="true"
             to="/"
             className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
@@ -52,6 +57,7 @@ function MobileMenu() {
             <p>All Developers</p>
           </NavLink>
           <NavLink
+            onClick={closeMenu}
             exact="true"
             to="/reservations"
             className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
@@ -62,6 +68,7 @@ function MobileMenu() {
             ? (
               <>
                 <NavLink
+                  onClick={closeMenu}
                   exact="true"
                   to="/add-developer"
                   className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
@@ -69,6 +76,7 @@ function MobileMenu() {
                   <p>Add New Developer</p>
                 </NavLink>
                 <NavLink
+                  onClick={closeMenu}
                   exact="true"
                   to="/delete-developer"
                   className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"

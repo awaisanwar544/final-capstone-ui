@@ -17,7 +17,7 @@ function SignUp() {
     const name = event.target[0].value;
     const email = event.target[1].value;
     const password = event.target[2].value;
-    const confirmPassword = event.target[4].value;
+    const confirmPassword = event.target[3].value;
     if (password === confirmPassword) {
       dispatch(signUp(name, email, password));
     } else {

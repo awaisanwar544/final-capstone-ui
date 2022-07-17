@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   BrowserRouter as Router,
@@ -8,7 +9,10 @@ import SplashPage from './pages/SplashPage';
 
 import AppRoutes from './components/AppRoutes';
 
+import { getProviders } from './redux/reducers/providers';
+
 function App() {
+  const dispatch = useDispatch();
   const localUser = localStorage.getItem('user');
   const user = JSON.parse(localUser);
   const renderSplash = (window.location.pathname === '/resetpassword') ? false : !user;
@@ -17,6 +21,10 @@ function App() {
   const removeSplash = () => {
     setSplash(false);
   };
+
+  useEffect(() => {
+    dispatch(getProviders());
+  }, []);
 
   return (
     <>

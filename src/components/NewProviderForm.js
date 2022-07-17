@@ -43,7 +43,7 @@ function NewProviderForm() {
     }
 
     if (skills.length < 1) {
-      setSkillsError('Please slect atleast one skill');
+      setSkillsError('Please select atleast one skill');
     }
   };
   useEffect(() => {
@@ -70,7 +70,7 @@ function NewProviderForm() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
               Rate
               <span className="text-red-500"> *</span>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="text" placeholder="Rate per Day" required />
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="number" placeholder="Rate per Day" required />
             </label>
           </div>
           <div className="mb-4">
@@ -86,7 +86,7 @@ function NewProviderForm() {
             <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="bio">
               Bio
               <span className="text-red-500"> *</span>
-              <textarea type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" rows="5" cols="50" id="bio" placeholder="Bio (Max 100 characters)" required />
+              <textarea type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" rows="5" cols="50" id="bio" placeholder="Bio (Max 100 characters)" maxLength="100" required />
             </label>
           </div>
           <div className="mb-4">
