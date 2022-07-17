@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 // import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ import logo from '../assets/logo.png';
 function ResetPassword() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const searchQuery = location.search;
   const resetToken = searchQuery.split('&reset_password_token=')[1];
   // const navigate = useNavigate();
@@ -22,8 +24,15 @@ function ResetPassword() {
     const newPassword = event.target[0].value;
     const confirmPassword = event.target[1].value;
     if (newPassword === confirmPassword) {
-      dispatch(passwordReset(newPassword, resetToken));
-      setDisplayMessage('Pasword changed succesfully. You will be redirected to sign in page shortly');
+      dispatch(passwordReset(newPassword, resetToken))
+        .then(() => {
+          setDisplayMessage('Pasword changed succesfully. You will be redirected to sign in page shortly');
+          const timer = setTimeout(() => {
+            navigate('/', { replace: true });
+            window.location.reload();
+          }, 5000);
+          return () => clearTimeout(timer);
+        });
     } else {
       setDisplayMessage('Password do not match, please re-enter');
     }
