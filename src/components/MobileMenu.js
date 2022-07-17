@@ -9,6 +9,9 @@ function MobileMenu() {
   const [navClass, setNavClass] = useState('hidden');
   const [buttonClass, setButtonClass] = useState('m-5 inline-flex items-center p-2 ml-3 text-sm text-custom-green-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-custom-green-500');
 
+  const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500';
+  const activeClassName = 'flex flex-col bg-custom-grey-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
+
   const changeOpen = () => {
     setOpen(!open);
   };
@@ -52,7 +55,7 @@ function MobileMenu() {
             onClick={closeMenu}
             exact="true"
             to="/"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+            className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
           >
             <p>All Developers</p>
           </NavLink>
@@ -60,7 +63,7 @@ function MobileMenu() {
             onClick={closeMenu}
             exact="true"
             to="/reservations"
-            className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+            className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
           >
             <p>Manage Reservations</p>
           </NavLink>
@@ -71,7 +74,7 @@ function MobileMenu() {
                   onClick={closeMenu}
                   exact="true"
                   to="/add-developer"
-                  className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+                  className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
                 >
                   <p>Add New Developer</p>
                 </NavLink>
@@ -79,7 +82,7 @@ function MobileMenu() {
                   onClick={closeMenu}
                   exact="true"
                   to="/delete-developer"
-                  className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+                  className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
                 >
                   <p>Delete Developer</p>
                 </NavLink>
@@ -90,6 +93,13 @@ function MobileMenu() {
               Logout
             </button>
           </div>
+          {user
+            ? (
+              <div className="text-custom-green-500 p-2 bg-custom-grey-500 flex items-center justify-center absolute bottom-0 w-full">
+                <p>{`Logged in as: ${user.name}`}</p>
+              </div>
+            )
+            : ''}
         </div>
       </div>
     </div>

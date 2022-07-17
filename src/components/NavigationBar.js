@@ -18,71 +18,80 @@ function NavigationBar() {
     window.location.reload();
   };
   return (
-    <div className="hidden lg:flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
-      <a href="/" className="w-24">
-        <img className="object-contain" src={logo} alt="logo" />
-      </a>
-      <div className="w-full pl-10 mt-20 space-y-1">
-        <NavLink
-          exact="true"
-          to="/"
-          className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-        >
-          <p>All Developers</p>
-        </NavLink>
-        <NavLink
-          exact="true"
-          to="/reservations"
-          className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-        >
-          <p>Manage Reservations</p>
-        </NavLink>
-        {user.admin
-          ? (
-            <>
-              <NavLink
-                exact="true"
-                to="/add-developer"
-                className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-              >
-                <p>Add New Developer</p>
-              </NavLink>
-              <NavLink
-                exact="true"
-                to="/delete-developer"
-                className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
-              >
-                <p>Delete Developer</p>
-              </NavLink>
-            </>
-          ) : ''}
-      </div>
-      <div className="flex items-center justify-center mt-20">
-        <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
-          Logout
-        </button>
-      </div>
-      <div className="flex flex-col items-center gap-4 mt-auto">
-        <div className="flex gap-x-6">
-          <a href="https://www.google.com/">
-            <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faTwitter} />
-          </a>
-          <a href="https://www.google.com/">
-            <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faFacebook} />
-          </a>
-          <a href="https://www.google.com/">
-            <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faGoogle} />
-          </a>
-          <a href="https://www.google.com/">
-            <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faYoutube} />
-          </a>
-          <a href="https://www.google.com/">
-            <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faPinterest} />
-          </a>
+    <>
+      {user
+        ? (
+          <div className="hidden lg:block text-custom-white-500 p-2 bg-custom-green-500 absolute top-0 right-0 z-10">
+            <p>{`Logged in as: ${user.name}`}</p>
+          </div>
+        )
+        : ''}
+      <div className="hidden lg:flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
+        <a href="/" className="w-24">
+          <img className="object-contain" src={logo} alt="logo" />
+        </a>
+        <div className="w-full pl-10 mt-20 space-y-1">
+          <NavLink
+            exact="true"
+            to="/"
+            className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+          >
+            <p>All Developers</p>
+          </NavLink>
+          <NavLink
+            exact="true"
+            to="/reservations"
+            className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+          >
+            <p>Manage Reservations</p>
+          </NavLink>
+          {user.admin
+            ? (
+              <>
+                <NavLink
+                  exact="true"
+                  to="/add-developer"
+                  className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+                >
+                  <p>Add New Developer</p>
+                </NavLink>
+                <NavLink
+                  exact="true"
+                  to="/delete-developer"
+                  className={({ isActive }) => (isActive ? activeClassName : inactiveClassName)}
+                >
+                  <p>Delete Developer</p>
+                </NavLink>
+              </>
+            ) : ''}
         </div>
-        <div>© Copyright 2022</div>
+        <div className="flex items-center justify-center mt-20">
+          <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
+            Logout
+          </button>
+        </div>
+        <div className="flex flex-col items-center gap-4 mt-auto">
+          <div className="flex gap-x-6">
+            <a href="https://www.google.com/">
+              <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faTwitter} />
+            </a>
+            <a href="https://www.google.com/">
+              <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faFacebook} />
+            </a>
+            <a href="https://www.google.com/">
+              <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faGoogle} />
+            </a>
+            <a href="https://www.google.com/">
+              <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faYoutube} />
+            </a>
+            <a href="https://www.google.com/">
+              <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faPinterest} />
+            </a>
+          </div>
+          <div>© Copyright 2022</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
