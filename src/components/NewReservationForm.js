@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { DateTime } from 'luxon';
 
 import { newReservations } from '../redux/reducers/reservations';
 import { getProviders } from '../redux/reducers/providers';
@@ -14,25 +15,98 @@ function NewReservationForm() {
   const navigate = useNavigate();
 
   const [totalCost, setTotalCost] = useState(0);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(false);
+  const [endDate, setEndDate] = useState(false);
+  const [message, setMessage] = useState(false);
 
   const changeStartDate = (event) => {
     event.preventDefault();
-    const date = new Date(event.target.value);
-    setStartDate(date);
+    const today = DateTime.now();
+    const date = DateTime.fromISO(event.target.value);
+    const difference = date.diff(today, ['months', 'days']);
+    const diffInDays = date.diff(today, 'days');
+
+    if (endDate) {
+      const duration = endDate.diff(date, 'days');
+      if (
+        difference > 0
+        && duration > 0
+        && difference.months < 6
+        && duration.days < 31) {
+        setMessage(false);
+        setStartDate(date);
+      }
+
+      if (
+        difference > 0
+        && duration > 0
+        && difference.months < 6
+        && duration.days > 30) {
+        setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
+      }
+
+      if (duration < 0) {
+        setMessage('End Date must be after Start Date');
+      }
+    }
+
+    if (difference.months === 6 && difference.days > 0) {
+      setMessage(`You can only make Reservation upto 6 months in advance. Your selected start date is ${difference.months} months and ${Math.floor(difference.days)} days aways`);
+    }
+
+    if (difference.months > 6) {
+      setMessage(`You can only make Reservation upto 6 months in advance. Your selected start date is more than ${difference.months} months away`);
+    }
+
+    if (diffInDays < 1) {
+      setMessage(`Start date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
+    }
+
+    if (!endDate && diffInDays > 0 && difference.months < 6) {
+      setMessage(false);
+      setStartDate(date);
+    }
   };
 
   const changeEndDate = (event) => {
     event.preventDefault();
-    const date = new Date(event.target.value);
-    setEndDate(date);
+    const today = DateTime.now();
+    const date = DateTime.fromISO(event.target.value);
+    const difference = date.diff(today, ['months', 'days']);
+
+    if (startDate) {
+      const duration = date.diff(startDate, 'days');
+
+      if (
+        difference > 0
+        && duration.days > 30) {
+        setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
+      }
+
+      if (duration.days < 1) {
+        setMessage('End Date must be after Start Date');
+      }
+
+      if (difference > 0 && duration.days < 31 && duration.days > 1) {
+        setMessage(false);
+        setEndDate(date);
+      }
+    }
+
+    if (difference < 1) {
+      setMessage(`End date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
+    }
+
+    if (!startDate && difference > 0) {
+      setMessage('Please Select the start date also.');
+      setEndDate(date);
+    }
   };
 
   const calculateTotalCost = () => {
     const difference = endDate - startDate;
     const numberOfDays = Math.ceil(difference / (1000 * 3600 * 24));
-    if (numberOfDays > 0) {
+    if (startDate && endDate && numberOfDays > 0) {
       return numberOfDays * Math.floor(provider.cost);
     }
 
@@ -62,7 +136,9 @@ function NewReservationForm() {
       {provider
         ? (
           <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
-            <h1 className="text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
+            <h1 className="text-xl px-5 md:text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
+            {message
+              ? <p className="text-red-500">{message}</p> : ''}
             <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
               <div className="flex flex-col space-y-6">
                 <div className="mb-4">
@@ -78,10 +154,10 @@ function NewReservationForm() {
                   </label>
                 </div>
                 <div className="mb-4">
-                  <div className="block text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
+                  <div className="flex justify-between text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
                     Total Cost:
                     <span className="text-custom-green-500">
-                      { totalCost ? ` ${totalCost} $` : ' Invalid Dates' }
+                      { totalCost ? `$ ${totalCost.toFixed(2)}` : ' Invalid Dates' }
                     </span>
                   </div>
                 </div>

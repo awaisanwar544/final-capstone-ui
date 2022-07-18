@@ -14,7 +14,7 @@ function SplashPage({ removeSplash }) {
     >
       <div className="flex w-full p-10 justify-center">
         <a href="/">
-          <img className="w-48" src={logo} alt="logo" />
+          <img className="w-48 select-none" src={logo} alt="logo" />
         </a>
       </div>
       <div className="flex items-center justify-center space-x-3">

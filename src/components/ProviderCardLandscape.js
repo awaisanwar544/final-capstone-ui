@@ -19,11 +19,11 @@ function ProviderCard({ providerData }) {
   };
 
   return (
-    <div id={`provider-${providerData.id}`} className="flex justify-around items-center mt-8 p-4 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms">
+    <div id={`provider-${providerData.id}`} className="flex flex-wrap justify-around items-center mt-8 py-4 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div className="item w-auto h-20">
         <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
       </div>
-      <div className="item w-auto h-28 text-center flex flex-col justify-around">
+      <div className="item w-auto h-28 text-center flex flex-col justify-around overflow-hidden">
         <h3>{providerData.name}</h3>
         <span className="text-custom-grey-500 select-none">..................</span>
         <p className="text-custom-grey-500">{providerData.bio}</p>

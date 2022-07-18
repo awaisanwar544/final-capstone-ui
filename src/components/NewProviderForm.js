@@ -63,7 +63,7 @@ function NewProviderForm() {
         ) are required
       </p>
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
-        <div className="flex space-x-10">
+        <div className="flex flex-col md:flex-row md:space-x-10">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Full Name
@@ -86,7 +86,7 @@ function NewProviderForm() {
             </label>
           </div>
         </div>
-        <div className="flex space-x-10">
+        <div className="flex flex-col md:flex-row md:space-x-10 justify-between">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="bio">
               Bio
@@ -95,7 +95,7 @@ function NewProviderForm() {
             </label>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="skills">
+            <label className="block text-gray-700 text-sm font-bold mb-4 max-h-64 overflow-y-scroll" htmlFor="skills">
               Skills
               <span className="text-red-500"> *</span>
               { skillsError
@@ -104,7 +104,7 @@ function NewProviderForm() {
               <br />
               {skills.map((skill) => (
                 <div key={skill.id}>
-                  <input type="checkbox" id={`skill-${skill.id}`} name="skills" value={skill.name} />
+                  <input type="checkbox" className="checked:accent-custom-green-500" id={`skill-${skill.id}`} name="skills" value={skill.name} />
                   {` ${skill.name}`}
                   <br />
                 </div>
