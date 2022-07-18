@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import logo from '../assets/logo.png';
 
 import { logIn } from '../redux/reducers/user';
@@ -24,7 +25,12 @@ function SignIn() {
     }
   }, [user]);
   return (
-    <div className="w-screen h-screen flex items-center bg-custom-green-500">
+    <motion.div
+      className="w-screen h-screen flex items-center bg-custom-green-500"
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: '-100%', opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
@@ -57,7 +63,7 @@ function SignIn() {
           Register now!
         </Link>
       </form>
-    </div>
+    </motion.div>
   );
 }
 

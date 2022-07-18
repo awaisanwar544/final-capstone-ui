@@ -68,6 +68,8 @@ export default function providersReducer(state = [], action) {
     default: return state;
 
     case GET_PROVIDERS:
-      return action.payload;
+      return [
+        ...action.payload,
+      ];
   }
 }

@@ -8,14 +8,15 @@ import {
 
 function ProviderCard({ providerData }) {
   return (
-    <div className="flex flex-col mx-6 bg-custom-white-500 hover:shadow-2xl hover:scale-105">
+    <div className="flex flex-col mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500">
       <div className="item w-auto h-40">
-        <img className="w-40 h-40 m-auto object-contain rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
+        <img className="w-40 h-40 m-auto object-cover rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
       </div>
-      <div className="item w-auto h-28 text-center flex flex-col justify-around">
+      <div className="font-bold item w-auto h-28 text-center flex flex-col justify-around">
         <h3>{providerData.name}</h3>
-        <span className="text-custom-grey-500 select-none">..................</span>
-        <p className="text-custom-grey-500">{providerData.bio}</p>
+        <div className="flex flex-wrap space-x-2 justify-center">
+          {providerData.skills.map((skill) => <p className="p-2 bg-gray-200" key={skill.id}>{skill.name}</p>)}
+        </div>
       </div>
       <Link
         exact="true"

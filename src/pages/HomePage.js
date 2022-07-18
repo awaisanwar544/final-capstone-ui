@@ -1,22 +1,24 @@
 import { useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import NavigationBar from '../components/NavigationBar';
 import ProviderCard from '../components/ProviderCard';
 import MobileMenu from '../components/MobileMenu';
+import { getProviders } from '../redux/reducers/providers';
 
 function HomePage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
-  const providers = useSelector((state) => state.providers, shallowEqual);
+  const providers = useSelector((state) => state.providers);
   const message = 'Currently there is no developer available';
   useEffect(() => {
     if (!user) {
       navigate('/signin');
     }
+    dispatch(getProviders());
   }, []);
-
   return (
     <div className="flex">
       <MobileMenu />

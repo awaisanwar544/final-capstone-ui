@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function MobileMenu() {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -11,6 +12,11 @@ function MobileMenu() {
 
   const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500';
   const activeClassName = 'flex flex-col bg-custom-grey-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
+
+  const variants = {
+    open: { opacity: 1 },
+    closed: { opacity: 0, y: '-100%' },
+  };
 
   const changeOpen = () => {
     setOpen(!open);
@@ -37,7 +43,6 @@ function MobileMenu() {
     }
 
     if (!open) {
-      setNavClass('hidden');
       setCrossClass('hidden');
       setButtonClass('m-5 inline-flex items-center p-2 ml-3 text-sm text-custom-green-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-custom-green-500');
       setMenuClass('w-6 h-6');
@@ -49,7 +54,11 @@ function MobileMenu() {
         <svg className={menuClass} aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" /></svg>
         <svg className={crossClass} aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
       </button>
-      <div className={navClass}>
+      <motion.div
+        className={navClass}
+        animate={open ? 'open' : 'closed'}
+        variants={variants}
+      >
         <div className="w-full mt-20 space-y-1">
           <NavLink
             onClick={closeMenu}
@@ -101,7 +110,7 @@ function MobileMenu() {
             )
             : ''}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
