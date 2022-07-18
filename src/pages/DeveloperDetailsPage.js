@@ -8,7 +8,7 @@ function DeveloperDetailsPage() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="w-screen h-screen flex flex-col items-center justify-center space-y-20 md:overflow-y-hidden">
+      <div className="w-full h-screen flex flex-col items-center mt-20 md:mt-0 md:justify-center space-y-20 md:overflow-y-hidden">
         <ProviderDetails />
       </div>
     </div>

@@ -19,11 +19,11 @@ function ProviderDetails() {
       {provider
         ? (
           <div className="flex flex-col md:flex-row w-full h-1/3 jusitify-center content-center items-center">
-            <div className="w-3/5">
-              <img className="w-3/5 m-auto object-contain bg-custom-green-500" src={provider.image} alt="Person" />
+            <div className="felx md:w-3/5 w-full px-20">
+              <img className="object-cover bg-custom-green-500" src={provider.image} alt="Person" />
             </div>
-            <div className="flex flex-col w-2/5 px-20">
-              <div className="flex flex-col self-end pb-12">
+            <div className="flex flex-col md:w-2/5 w-full px-20">
+              <div className="flex flex-col w-full pb-12">
                 <h1 className="text-4xl font-bold text-custom-green-500 self-end">
                   {provider.name}
                 </h1>
@@ -34,7 +34,7 @@ function ProviderDetails() {
               </div>
               <div className="flex justify-between text-lg font-bold text-custom-grey-500 mt-6">
                 <p>Cost per Day:</p>
-                <p>{provider.cost}</p>
+                <p>{`$ ${provider.cost}`}</p>
               </div>
               <div className="flex my-12 self-end">
                 <Link to={`/${id}/reserve-developer`} state={provider} exact="true" className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">
