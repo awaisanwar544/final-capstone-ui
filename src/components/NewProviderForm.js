@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faTwitter, faGithub, faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
+
 import { getSkills } from '../redux/reducers/skills';
 import { newProviders } from '../redux/reducers/providers';
 
@@ -108,22 +113,34 @@ function NewProviderForm() {
           </div>
         </div>
         <div>
-          <p className="text-xl2 text-bold">Add links to the social profiles</p>
+          <p className=" text-gray-700 text-sm font-bold">Add links to the social profiles:</p>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="github">
-              Github
+              <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
+                Github
+                {' '}
+                <FontAwesomeIcon className="w-5 bg:white-500 text-xl" icon={faGithub} />
+              </p>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="github" type="text" placeholder="Github profile link" />
             </label>
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="linkedin">
-              Likedin
+              <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
+                LinkedIn
+                {' '}
+                <FontAwesomeIcon className="w-5 bg:white-500 text-xl" icon={faLinkedin} />
+              </p>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="linkedin" type="text" placeholder="Linkedin profile link" />
             </label>
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="twitter">
-              Twitter
+              <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
+                Twitter
+                {' '}
+                <FontAwesomeIcon className="w-5 bg:white-500 text-xl" icon={faTwitter} />
+              </p>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="twitter" type="text" placeholder="Twitter profile link" />
             </label>
           </div>
