@@ -15,7 +15,7 @@ function Reservation({ reservationData }) {
   };
 
   return (
-    <div id={`reservation-${reservationData.id}`} className="flex justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
+    <div id={`reservation-${reservationData.id}`} className="flex flex-wrap justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div>
         <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src={reservationData.provider_image} alt={reservationData.provider_name} />
       </div>
@@ -25,7 +25,7 @@ function Reservation({ reservationData }) {
             You reserved:
             <b>{reservationData.provider_name}</b>
           </p>
-          <p>
+          <p className="my-3">
             {`From ${new Date(reservationData.start_date).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.start_date.split('').splice(8, 9).join('')}
                to ${new Date(reservationData.end_date).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.end_date.split('').splice(8, 9).join('')}`}
           </p>

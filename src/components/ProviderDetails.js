@@ -18,7 +18,7 @@ function ProviderDetails() {
     <>
       {provider
         ? (
-          <div className="flex w-full h-1/3 jusitify-center content-center items-center">
+          <div className="flex flex-col md:flex-row w-full h-1/3 jusitify-center content-center items-center">
             <div className="w-3/5">
               <img className="w-3/5 m-auto object-contain bg-custom-green-500" src={provider.image} alt="Person" />
             </div>

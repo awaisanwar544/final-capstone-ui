@@ -19,7 +19,7 @@ function MyReservations() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="flex flex-col items-center h-screen w-full overflow-y-scroll">
+      <div className="flex flex-col items-center h-screen w-full overflow-y-scroll pt-10">
         <h1 className="text-3xl my-4 font-bold">My reservations:</h1>
         {
           reservations.map((item) => <Reservation key={item.id} reservationData={item} />)
