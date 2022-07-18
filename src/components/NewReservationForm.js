@@ -99,7 +99,7 @@ function NewReservationForm() {
       {provider
         ? (
           <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
-            <h1 className="text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
+            <h1 className="text-xl px-5 md:text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
             {message
               ? <p className="text-red-500">{message}</p> : ''}
             <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>

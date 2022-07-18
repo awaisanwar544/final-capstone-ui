@@ -7,7 +7,7 @@ function AddDeveloper() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="w-screen">
+      <div className="w-full mt-40">
         <NewProviderForm />
       </div>
     </div>

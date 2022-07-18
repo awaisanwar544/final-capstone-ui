@@ -33,7 +33,7 @@ function Reservation({ reservationData }) {
             Total cost:
             <b>{reservationData.total_cost}</b>
           </p>
-          <p className="text-custom-grey-500">{`(Reserved on ${reservationData.created_at.slice(0, 10).split('-').reverse().join(' / ')})`}</p>
+          <p className="text-custom-grey-500 my-3">{`(Reserved on ${reservationData.created_at.slice(0, 10).split('-').reverse().join(' / ')})`}</p>
         </div>
       </div>
       <div className="flex items-center justify-center">
