@@ -43,7 +43,7 @@ function ResetPassword() {
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
-            <img className="w-24" src={logo} alt="logo" />
+            <img className="w-24 select-none" src={logo} alt="logo" />
           </a>
         </div>
         <div className="mb-4">

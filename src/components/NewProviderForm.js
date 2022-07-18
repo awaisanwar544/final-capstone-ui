@@ -99,7 +99,7 @@ function NewProviderForm() {
               <br />
               {skills.map((skill) => (
                 <div key={skill.id}>
-                  <input type="checkbox" id={`skill-${skill.id}`} name="skills" value={skill.name} />
+                  <input type="checkbox" className="checked:accent-custom-green-500" id={`skill-${skill.id}`} name="skills" value={skill.name} />
                   {` ${skill.name}`}
                   <br />
                 </div>
