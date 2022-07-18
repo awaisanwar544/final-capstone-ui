@@ -1,17 +1,17 @@
 import NavigationBar from '../components/NavigationBar';
-import NewProviderForm from '../components/NewProviderForm';
+import NewReservationForm from '../components/NewReservationForm';
 import MobileMenu from '../components/MobileMenu';
 
-function AddDeveloper() {
+function AddReservation() {
   return (
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
       <div className="w-screen">
-        <NewProviderForm />
+        <NewReservationForm />
       </div>
     </div>
   );
 }
 
-export default AddDeveloper;
+export default AddReservation;

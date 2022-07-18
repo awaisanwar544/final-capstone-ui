@@ -1,10 +1,24 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+
 import NavigationBar from '../components/NavigationBar';
-
 import ProviderCard from '../components/ProviderCard';
-
 import MobileMenu from '../components/MobileMenu';
+import { getProviders } from '../redux/reducers/providers';
 
 function HomePage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
+  const providers = useSelector((state) => state.providers);
+  const message = 'Currently there is no developer available';
+  useEffect(() => {
+    if (!user) {
+      navigate('/signin');
+    }
+    dispatch(getProviders());
+  }, []);
   return (
     <div className="flex">
       <MobileMenu />
@@ -15,12 +29,9 @@ function HomePage() {
           <p className="text-xl">Please select a developer from the List</p>
         </div>
         <div className="w-full max-h-screen flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
-          <ProviderCard />
+          { providers.length
+            ? (providers.map((item) => <ProviderCard key={item.id} providerData={item} />))
+            : <p className="text-red-500">{message}</p> }
         </div>
       </div>
     </div>
