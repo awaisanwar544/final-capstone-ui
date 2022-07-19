@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
@@ -16,7 +17,14 @@ function ProviderCard({ providerData }) {
   };
 
   return (
-    <div id={`provider-${providerData.id}`} className="flex justify-around items-center mt-8 py-4 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms">
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      animate={{ x: 0, opacity: 1, rotate: 0 }}
+      initial={{ x: '100%', opacity: 0, rotate: 20 }}
+      transition={{ duration: 0.5 }}
+      id={`provider-${providerData.id}`}
+      className="flex justify-around items-center mt-8 py-4 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 hover:rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms"
+    >
       <div className="item w-auto h-20">
         <img className="w-20 h-20 m-auto object-cover rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
       </div>
@@ -30,7 +38,7 @@ function ProviderCard({ providerData }) {
           Delete
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

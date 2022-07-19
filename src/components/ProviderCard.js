@@ -11,6 +11,9 @@ function ProviderCard({ providerData }) {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
+      animate={{ x: 0, opacity: 1, rotate: 0 }}
+      initial={{ x: '100%', opacity: 0, rotate: 20 }}
+      transition={{ duration: 0.5 }}
       className="flex flex-col w-56 mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500"
     >
       <div className="item w-auto h-40">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -55,7 +56,12 @@ function NewProviderForm() {
     dispatch(getSkills());
   }, []);
   return (
-    <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
+    <motion.div
+      animate={{ x: 0, opacity: 1, rotate: 0 }}
+      initial={{ x: '100%', opacity: 0, rotate: 20 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col w-full h-screen flex items-center justify-center space-y-10"
+    >
       <h1 className="text-4xl text-custom-grey-500 mt-40 md:mt-0">Add New Developer</h1>
       <p>
         All fields with (
@@ -151,7 +157,7 @@ function NewProviderForm() {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 }
 

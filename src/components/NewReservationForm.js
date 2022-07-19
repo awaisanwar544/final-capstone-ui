@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { DateTime } from 'luxon';
+import { motion } from 'framer-motion';
 
 import { newReservations } from '../redux/reducers/reservations';
 import { getProviders } from '../redux/reducers/providers';
@@ -126,7 +127,12 @@ function NewReservationForm() {
     <>
       {provider
         ? (
-          <div className="flex flex-col w-full h-screen flex items-center justify-center space-y-10">
+          <motion.div
+            animate={{ x: 0, opacity: 1, rotate: 0 }}
+            initial={{ x: '100%', opacity: 0, rotate: 20 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col w-full h-screen flex items-center justify-center space-y-10"
+          >
             <h1 className="text-xl px-5 md:text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
             {message
               ? <p className="text-red-500">{message}</p> : ''}
@@ -159,7 +165,7 @@ function NewReservationForm() {
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         ) : 'Wait a moment while we fetch data'}
     </>
   );
