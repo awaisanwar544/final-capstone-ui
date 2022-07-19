@@ -26,45 +26,36 @@ function NewReservationForm() {
     const difference = date.diff(today, ['months', 'days']);
     const diffInDays = Math.ceil(date.diff(today, 'days').days);
 
-    if (endDate) {
-      const duration = endDate.diff(date, 'days');
-      if (
-        difference.months > 0
-        && duration.days > 0
-        && difference.months < 6
-        && duration.days < 31) {
+    if (difference.months >= 6 && difference.days > 0) {
+      setMessage(`You can only book a developer 6 or less months advance. Your current selection is ${difference.months} and ${Math.ceil(difference.days)} days away`);
+    }
+
+    if (difference.months < 6) {
+      if (diffInDays < 1) {
+        setMessage(`Start date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
+      }
+
+      if (diffInDays > 0) {
         setMessage(false);
         setStartDate(date);
       }
+    }
 
-      if (
-        difference.months > 0
-        && duration.days > 0
-        && difference.months < 6
-        && duration.days > 30) {
-        setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
+    if (endDate) {
+      const duration = Math.ceil(endDate.diff(date, 'days').days);
+
+      if (duration < 1) {
+        setMessage('End date must be later than the start date');
       }
 
-      if (duration.days < 0) {
-        setMessage('End Date must be after Start Date');
+      if (duration > 30) {
+        setMessage(`You can book a developer for 30 days. Currently your duration is ${duration} days.`);
       }
-    }
 
-    if (difference.months === 6 && difference.days > 0) {
-      setMessage(`You can only make Reservation upto 6 months in advance. Your selected start date is ${difference.months} months and ${Math.floor(difference.days)} days aways`);
-    }
-
-    if (difference.months > 6) {
-      setMessage(`You can only make Reservation upto 6 months in advance. Your selected start date is more than ${difference.months} months away`);
-    }
-
-    if (diffInDays < 1) {
-      setMessage(`Start date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
-    }
-
-    if (!endDate && diffInDays > 0 && difference.months < 6) {
-      setMessage(false);
-      setStartDate(date);
+      if (duration <= 30 && duration > 0) {
+        setMessage(false);
+        setStartDate(date);
+      }
     }
   };
 
@@ -72,41 +63,40 @@ function NewReservationForm() {
     event.preventDefault();
     const today = DateTime.now();
     const date = DateTime.fromISO(event.target.value);
-    const difference = date.diff(today, ['months', 'days']);
+    const diffInDays = Math.ceil(date.diff(today, 'days').days);
 
-    if (startDate) {
-      const duration = date.diff(startDate, 'days');
-
-      if (
-        difference.months > 0
-        && duration.days > 30) {
-        setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
-      }
-
-      if (duration.days < 1) {
-        setMessage('End Date must be after Start Date');
-      }
-
-      if (difference.months > 0 && duration.days < 31 && duration.days > 1) {
-        setMessage(false);
-        setEndDate(date);
-      }
-    }
-
-    if (difference.months < 1) {
+    if (diffInDays < 1) {
       setMessage(`End date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
     }
 
-    if (!startDate && difference.months > 0) {
-      setMessage('Please Select the start date also.');
-      setEndDate(date);
+    if (diffInDays > 0) {
+      if (startDate) {
+        const duration = Math.ceil(date.diff(startDate, 'days').days);
+
+        if (duration < 1) {
+          setMessage('End date must be later than the start date');
+        }
+
+        if (duration > 30) {
+          setMessage(`You can book a developer for 30 days. Currently your duration is ${duration} days.`);
+        }
+
+        if (duration <= 30 && duration > 0) {
+          setMessage(false);
+          setEndDate(date);
+        }
+      }
+
+      if (!startDate) {
+        setEndDate(date);
+        setMessage('Please select the start date');
+      }
     }
   };
 
   const calculateTotalCost = () => {
-    const difference = endDate - startDate;
-    const numberOfDays = Math.ceil(difference / (1000 * 3600 * 24));
-    if (startDate && endDate && numberOfDays > 0) {
+    if (startDate && endDate) {
+      const numberOfDays = Math.ceil(endDate.diff(startDate, 'days').days);
       return numberOfDays * Math.floor(provider.cost);
     }
 
@@ -126,6 +116,7 @@ function NewReservationForm() {
   useEffect(() => {
     setTotalCost(calculateTotalCost);
   }, [startDate, endDate]);
+
   useEffect(() => {
     if (providers.length === 0) {
       dispatch(getProviders());
