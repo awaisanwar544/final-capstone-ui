@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 
 function MobileMenu() {
   const user = JSON.parse(localStorage.getItem('user'));
+  const admin = () => {
+    if (user.admin) {
+      return true;
+    }
+
+    return false;
+  };
   const [open, setOpen] = useState(false);
   const [crossClass, setCrossClass] = useState('hidden');
   const [menuClass, setMenuClass] = useState('w-6 h-6 z-20');
@@ -76,7 +83,7 @@ function MobileMenu() {
           >
             <p>Manage Reservations</p>
           </NavLink>
-          {user.admin
+          {admin
             ? (
               <>
                 <NavLink

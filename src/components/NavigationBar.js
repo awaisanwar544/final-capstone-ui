@@ -7,6 +7,13 @@ import logo from '../assets/logo.png';
 
 function NavigationBar() {
   const user = JSON.parse(localStorage.getItem('user'));
+  const admin = () => {
+    if (user.admin) {
+      return true;
+    }
+
+    return false;
+  };
   const inactiveClassName = 'flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-green-500';
   const activeClassName = 'flex flex-col bg-custom-green-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5';
 
@@ -45,7 +52,7 @@ function NavigationBar() {
           >
             <p>Manage Reservations</p>
           </NavLink>
-          {user.admin
+          {admin
             ? (
               <>
                 <NavLink
