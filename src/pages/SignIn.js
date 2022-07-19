@@ -13,9 +13,8 @@ function SignIn() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const email = event.target[0].value;
-    const password = event.target[1].value;
-    dispatch(logIn(email, password));
+    const { email, password } = event.target.elements;
+    dispatch(logIn(email.value, password.value));
   };
 
   useEffect(() => {
