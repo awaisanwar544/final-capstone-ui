@@ -52,7 +52,7 @@ function NavigationBar() {
           >
             <p>Manage Reservations</p>
           </NavLink>
-          {admin
+          {admin()
             ? (
               <>
                 <NavLink

@@ -8,6 +8,7 @@ import { signUp } from '../redux/reducers/user';
 function SignUp() {
   const dispatch = useDispatch();
   const newUser = useSelector((state) => state.user);
+  const error = useSelector((state) => state.user.error);
   const navigate = useNavigate();
 
   const [displayMessage, setDisplayMessage] = useState(false);
@@ -26,9 +27,13 @@ function SignUp() {
   };
 
   useEffect(() => {
-    if (Object.keys(newUser).length !== 0) {
+    if (Object.keys(newUser).length !== 0 && !newUser.error) {
       localStorage.setItem('user', JSON.stringify(newUser));
       navigate('/');
+    }
+
+    if (error) {
+      setDisplayMessage(error.response.data['error:']);
     }
   }, [newUser]);
 
@@ -56,7 +61,7 @@ function SignUp() {
         <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
             Password
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="password" type="password" placeholder="******" required />
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="password" type="password" placeholder="******" minLength={6} required />
           </label>
         </div>
         <div className="mb-4">

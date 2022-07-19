@@ -32,12 +32,19 @@ export const signUp = (name, email, password) => async (dispatch) => {
     password,
   };
 
-  const response = await axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => res.data);
-  dispatch({
-    type: SIGN_UP,
-    payload: response,
-  });
+  await axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => {
+      dispatch({
+        type: SIGN_UP,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERROR,
+        error: err,
+      });
+    });
 };
 
 export const logIn = (email, password) => async (dispatch) => {
