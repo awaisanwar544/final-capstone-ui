@@ -82,6 +82,7 @@ export const forgotPassword = (email) => async (dispatch) => {
       dispatch({
         type: FORGOT_PASSWORD,
         payload: res.data,
+        error: false,
       });
     })
     .catch((err) => {
@@ -138,7 +139,6 @@ export default function userReducer(state = initialState, action = {}) {
 
   if (action.type === ERROR) {
     return {
-      ...state,
       error: action.error,
     };
   }

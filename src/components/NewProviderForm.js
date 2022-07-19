@@ -48,7 +48,7 @@ function NewProviderForm() {
     }
 
     if (skills.length < 1) {
-      setSkillsError('Please select atleast one skill');
+      setSkillsError('Please select at least one skill');
     }
   };
   useEffect(() => {
@@ -82,7 +82,7 @@ function NewProviderForm() {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="profile-image">
               Profile Image
               <span className="text-red-500"> *</span>
-              <input className="form-control block w-full text-base font-normal file:py-1.5 file:px-3 text-custom-grey-500 bg-custom-white-500 bg-clip-padding border border-solid border-custom-green-500 rounded transition ease-in-out m-0 focus:text-custom-green-500 focus:bg-custom-white-500 focus:border-custom-green-500 focus:outline-none file:bg-custom-green-500 file:rounded file:border-none file:text-custom-white-500 file:cursor-pointer" id="profile-image" type="file" placeholder="Upload Profile Image" required />
+              <input className="form-control block w-full text-base font-normal file:py-1.5 file:px-3 text-custom-grey-500 bg-custom-white-500 bg-clip-padding border border-solid border-custom-green-500 rounded transition ease-in-out m-0 focus:text-custom-green-500 focus:bg-custom-white-500 focus:border-custom-green-500 focus:outline-none file:bg-custom-green-500 file:rounded file:border-none file:text-custom-white-500 file:cursor-pointer" id="profile-image" type="file" placeholder="Upload Profile Image" accept="image/*" required />
             </label>
           </div>
         </div>

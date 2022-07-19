@@ -16,7 +16,7 @@ function ForgotPassword() {
   };
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-custom-green-500 space-y-10">
-      {message && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{`${message} Please Check your email to continue.`}</p>}
+      {message && <p className="absolute top-0 w-screen text-center bg-yellow-500 text-custom-white-500">{`${message} Please Check your email to continue.`}</p>}
       {error && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{error.response.data.error[0]}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
