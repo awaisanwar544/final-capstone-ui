@@ -17,7 +17,7 @@ function Reservation({ reservationData }) {
   return (
     <div id={`reservation-${reservationData.id}`} className="flex flex-wrap justify-around mt-8 shadow-lg w-3/4 border-4 border-transparent hover:shadow-2xl transition hover:scale-110 duration:300ms">
       <div>
-        <img className="w-20 h-20 m-auto object-contain rounded-full bg-custom-green-500" src={reservationData.provider_image} alt={reservationData.provider_name} />
+        <img className="w-20 h-20 m-auto object-cover rounded-full bg-custom-green-500" src={reservationData.provider_image} alt={reservationData.provider_name} />
       </div>
       <div className="flex items-center">
         <div className="text-center">

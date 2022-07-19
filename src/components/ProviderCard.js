@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,7 +9,10 @@ import {
 
 function ProviderCard({ providerData }) {
   return (
-    <div className="flex flex-col w-56 mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500">
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      className="flex flex-col w-56 mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500"
+    >
       <div className="item w-auto h-40">
         <img className="w-40 h-40 m-auto object-cover rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
       </div>
@@ -45,7 +49,7 @@ function ProviderCard({ providerData }) {
           </li>
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

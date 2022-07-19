@@ -33,7 +33,7 @@ function HomePage() {
           <h1 className="text-4xl md:text-6xl text-custom-grey-500">Developers To Hire</h1>
           <p className="text-xl">Please select a developer from the List:</p>
         </div>
-        <div className="w-full max-h-screen flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
+        <div className="w-full h-full flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
           { providers.length
             ? (providers.map((item) => <ProviderCard key={item.id} providerData={item} />))
             : <p className="text-red-500">{message}</p> }

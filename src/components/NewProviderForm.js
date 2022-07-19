@@ -62,23 +62,23 @@ function NewProviderForm() {
         <span className="text-red-500">*</span>
         ) are required
       </p>
-      <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
+      <form className="bg-white mx-auto" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row md:space-x-10">
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Full Name
               <span className="text-red-500"> *</span>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="name" type="text" placeholder="Full Name" required />
             </label>
           </div>
-          <div className="mb-6">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
               Rate
               <span className="text-red-500"> *</span>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="number" placeholder="Rate per Day" required />
             </label>
           </div>
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="profile-image">
               Profile Image
               <span className="text-red-500"> *</span>
@@ -87,15 +87,15 @@ function NewProviderForm() {
           </div>
         </div>
         <div className="flex flex-col md:flex-row md:space-x-10 justify-between md:justify-start">
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-4" htmlFor="bio">
               Bio
               <span className="text-red-500"> *</span>
               <textarea type="text" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" rows="5" cols="50" id="bio" placeholder="Bio (Max 100 characters)" maxLength="100" required />
             </label>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-4 max-h-64 overflow-y-scroll" htmlFor="skills">
+          <div className="md:w-2/5 w-full">
+            <label className="block text-gray-700 text-sm font-bold mb-4 max-h-36 overflow-y-scroll" htmlFor="skills">
               Skills
               <span className="text-red-500"> *</span>
               { skillsError
@@ -114,7 +114,7 @@ function NewProviderForm() {
         </div>
         <div>
           <p className=" text-gray-700 text-sm font-bold">Add links to the social profiles:</p>
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="github">
               <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
                 Github
@@ -124,7 +124,7 @@ function NewProviderForm() {
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="github" type="text" placeholder="Github profile link" />
             </label>
           </div>
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="linkedin">
               <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
                 LinkedIn
@@ -134,7 +134,7 @@ function NewProviderForm() {
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="linkedin" type="text" placeholder="Linkedin profile link" />
             </label>
           </div>
-          <div className="mb-4">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="twitter">
               <p className="w-fit mb-1 rounded-full border-2 border-custom-gray-500 hover:border-custom-green-500 text-custom-grey-500 hover:text-custom-green-500 p-1" without="true" rel="noreferrer" target="_blank">
                 Twitter
