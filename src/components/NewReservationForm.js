@@ -29,8 +29,8 @@ function NewReservationForm() {
     if (endDate) {
       const duration = endDate.diff(date, 'days');
       if (
-        difference > 0
-        && duration > 0
+        difference.months > 0
+        && duration.days > 0
         && difference.months < 6
         && duration.days < 31) {
         setMessage(false);
@@ -38,14 +38,14 @@ function NewReservationForm() {
       }
 
       if (
-        difference > 0
-        && duration > 0
+        difference.months > 0
+        && duration.days > 0
         && difference.months < 6
         && duration.days > 30) {
         setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
       }
 
-      if (duration < 0) {
+      if (duration.days < 0) {
         setMessage('End Date must be after Start Date');
       }
     }
