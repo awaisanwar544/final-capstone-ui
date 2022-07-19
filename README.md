@@ -89,7 +89,7 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@John_J_Arboleda](https://twitter.com/John_J_Arboleda)
 - LinkedIn: [@john-arboleda](https://www.linkedin.com/in/john-arboleda/)
 
-### 👤 Awais Amwar
+### 👤 Awais Anwar
 
 - GitHub: [@awaisanwar544](https://github.com/awaisanwar544)
 - LinkedIn: [@awaisanwar544](https://www.linkedin.com/in/awaisanwar544/)
