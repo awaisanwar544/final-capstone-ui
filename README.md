@@ -50,7 +50,7 @@ If you're an admin user on [the Book dev app](https://book-dev.herokuapp.com/), 
 
 - Heroku <img align="left" alt="Heroku" width="26px" src="https://github.com/get-icon/geticon/raw/master/icons/heroku-icon.svg" />
 
-Getting Started: :chart_with_upwards_trend:
+## Getting Started: :chart_with_upwards_trend:
 To get a local copy up and running follow these simple example steps.
 
 - Click on the top right green "code" button.
