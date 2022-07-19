@@ -24,7 +24,7 @@ function NewReservationForm() {
     const today = DateTime.now();
     const date = DateTime.fromISO(event.target.value);
     const difference = date.diff(today, ['months', 'days']);
-    const diffInDays = date.diff(today, 'days');
+    const diffInDays = Math.ceil(date.diff(today, 'days').days);
 
     if (endDate) {
       const duration = endDate.diff(date, 'days');
@@ -78,7 +78,7 @@ function NewReservationForm() {
       const duration = date.diff(startDate, 'days');
 
       if (
-        difference > 0
+        difference.months > 0
         && duration.days > 30) {
         setMessage(`You can only make Book a developer upto 30 days. Your selected duration is ${duration.days} days`);
       }
@@ -87,17 +87,17 @@ function NewReservationForm() {
         setMessage('End Date must be after Start Date');
       }
 
-      if (difference > 0 && duration.days < 31 && duration.days > 1) {
+      if (difference.months > 0 && duration.days < 31 && duration.days > 1) {
         setMessage(false);
         setEndDate(date);
       }
     }
 
-    if (difference < 1) {
+    if (difference.months < 1) {
       setMessage(`End date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
     }
 
-    if (!startDate && difference > 0) {
+    if (!startDate && difference.months > 0) {
       setMessage('Please Select the start date also.');
       setEndDate(date);
     }
