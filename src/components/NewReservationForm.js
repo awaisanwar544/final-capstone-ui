@@ -53,7 +53,11 @@ function NewReservationForm() {
         setMessage(`You can book a developer for 30 days. Currently your duration is ${duration} days.`);
       }
 
-      if (duration <= 30 && duration > 0) {
+      if (diffInDays < 1) {
+        setMessage(`Start date must be later than today. ${DateTime.now().toLocaleString(DateTime.DATE_MED)} `);
+      }
+
+      if (duration <= 30 && duration > 0 && diffInDays > 0) {
         setMessage(false);
         setStartDate(date);
       }
