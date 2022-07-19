@@ -10,7 +10,7 @@ function SignUp() {
   const newUser = useSelector((state) => state.user);
   const navigate = useNavigate();
 
-  const [displayMessage, setDisplayMessage] = useState(null);
+  const [displayMessage, setDisplayMessage] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +34,7 @@ function SignUp() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center space-y-10 bg-custom-green-500">
-      {displayMessage && <p className="text-custom-white-500">{displayMessage}</p>}
+      {displayMessage && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{displayMessage}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">

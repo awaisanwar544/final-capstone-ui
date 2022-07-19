@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -9,6 +9,9 @@ import { logIn } from '../redux/reducers/user';
 function SignIn() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const error = useSelector((state) => state.user.error);
+  const [displayMessage, setDisplayMessage] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -23,7 +26,11 @@ function SignIn() {
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/');
     }
-  }, [user]);
+
+    if (error) {
+      setDisplayMessage(error.response.data['error:']);
+    }
+  }, [user, error]);
   return (
     <motion.div
       className="w-screen h-screen flex items-center bg-custom-green-500"
@@ -31,6 +38,7 @@ function SignIn() {
       initial={{ x: '-100%', opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      {displayMessage && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{displayMessage}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">

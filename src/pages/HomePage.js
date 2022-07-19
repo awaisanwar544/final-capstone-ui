@@ -17,6 +17,11 @@ function HomePage() {
     if (!user) {
       navigate('/signin');
     }
+
+    if (user && !user.email) {
+      localStorage.removeItem('user');
+      navigate('/signin');
+    }
     dispatch(getProviders());
   }, []);
   return (
