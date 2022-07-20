@@ -39,7 +39,6 @@ function SignUp() {
 
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center space-y-10 bg-custom-green-500">
-      {displayMessage && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{displayMessage}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
@@ -75,6 +74,7 @@ function SignUp() {
             Sign Up
           </button>
         </div>
+        {displayMessage && <p className="mt-5 text-center text-red-500">{displayMessage}</p>}
         <Link to="/signin" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
           Already have an account?
           <br />

@@ -38,7 +38,6 @@ function SignIn() {
       initial={{ x: '-100%', opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {displayMessage && <p className="absolute top-0 w-screen text-center bg-red-500 text-custom-white-500">{displayMessage}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
@@ -65,6 +64,7 @@ function SignIn() {
             Forgot Password?
           </Link>
         </div>
+        {displayMessage && <p className="mt-5 text-center text-red-500">{displayMessage}</p>}
         <Link to="/signup" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
           Do not have an account?
           <br />
