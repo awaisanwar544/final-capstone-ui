@@ -21,12 +21,12 @@ function ProviderDetails() {
           <div
             className="flex flex-col md:flex-row md:w-full overflow:hidden jusitify-center content-center items-center"
           >
-            <div className="flex md:w-3/5 w-full px-10">
+            <div className="flex md:w-3/5 w-full px-10 justify-center">
               <img className="object-cover bg-custom-green-500" src={provider.image} alt="Person" />
             </div>
             <div className="flex flex-col md:w-2/5 w-full px-10">
               <div className="flex flex-col w-full pb-12">
-                <h1 className="text-4xl font-bold text-custom-green-500 self-end">
+                <h1 className="text-4xl font-bold text-custom-green-500 self-end my-5">
                   {provider.name}
                 </h1>
                 <p className="text-sm font-bold text-custom-grey-500 self-end">{provider.bio}</p>

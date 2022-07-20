@@ -76,7 +76,7 @@ function NavigationBar() {
               </>
             ) : ''}
         </div>
-        <div className="flex flex-col items-center justify-center truncate pr-5">
+        <div className="flex flex-col items-center justify-center truncate pr-5 space-y-2">
           <div>
             <p className="text-custom-green-500 font-bold text-sm">{`Logged in as: ${user.name}`}</p>
           </div>

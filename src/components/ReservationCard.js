@@ -31,7 +31,7 @@ function Reservation({ reservationData }) {
         <div className="text-center">
           <p className="flex justify-around">
             You reserved:
-            <b>{reservationData.provider_name}</b>
+            <b>{` ${reservationData.provider_name}`}</b>
           </p>
           <p className="my-3">
             {`From ${new Date(reservationData.start_date).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.start_date.split('').splice(8, 9).join('')}
@@ -39,7 +39,7 @@ function Reservation({ reservationData }) {
           </p>
           <p className="flex justify-around">
             Total cost:
-            <b>{`${reservationData.total_cost}0`}</b>
+            <b>{`$${reservationData.total_cost}0`}</b>
           </p>
           <p className="text-custom-grey-500 my-3">{`(Reserved on ${new Date(reservationData.created_at).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.created_at.split('').splice(8, 2).join('')}, ${reservationData.created_at.split('').splice(0, 4).join('')})`}</p>
         </div>

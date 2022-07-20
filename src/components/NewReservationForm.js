@@ -43,7 +43,7 @@ function NewReservationForm() {
     const startDateInDays = dateInDays(year, month, day);
 
     if (startDateInDays <= todayInDays()) {
-      setMessage(`Start date must be later than today(at UTC-0 ${new Date().getUTCDate()}/${new Date().getUTCMonth() + 1}/${new Date().getUTCFullYear()}).`);
+      setMessage(`Start date must be later than today (at UTC-0 ${new Date().getUTCDate()}/${new Date().getUTCMonth() + 1}/${new Date().getUTCFullYear()}).`);
     } else if (startDateInDays > (todayInDays() + 180)) {
       setMessage(`You can only book a developer 180 days in advance (6 months aproximately), your current selection is ${startDateInDays - todayInDays()} in advance.`);
     } else {

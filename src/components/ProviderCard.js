@@ -18,7 +18,7 @@ function ProviderCard({ providerData }) {
       animate={{ x: 0, opacity: 1, rotate: 0 }}
       initial={{ x: '100%', opacity: 0, rotate: 20 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col w-64 mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500"
+      className="flex flex-col min-w-[25%] w-64 mx-6 my-2 p-2 bg-custom-white-500 shadow-2xl hover:shadow-custom-green-500"
     >
       <div className="item w-auto h-40">
         <img className="w-40 h-40 m-auto object-cover rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
