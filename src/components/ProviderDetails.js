@@ -35,7 +35,7 @@ function ProviderDetails() {
                 </h1>
                 <p className="text-sm font-bold text-custom-grey-500 self-end text-right">{provider.bio}</p>
               </div>
-              <div>
+              <div className="overflow-y-scroll max-h-60">
                 {provider.skills.map((skill) => <p key={skill.id} className="p-2 bg-custom-white-500 odd:bg-gray-200">{skill.name}</p>)}
               </div>
               <div className="flex justify-between text-lg font-bold text-custom-grey-500 mt-6">
