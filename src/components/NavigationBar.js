@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTwitter, faFacebook, faGoogle, faYoutube, faPinterest,
@@ -6,6 +7,16 @@ import {
 import logo from '../assets/logo.png';
 
 function NavigationBar() {
+  const providers = useSelector((state) => state.providers);
+  const links = [];
+  for (let i = 0; i < 5; i += 1) {
+    const provider = providers[Math.floor(Math.random() * providers.length)];
+    if (provider) {
+      if (Math.floor(Math.random() * 3) === 0) links.push(provider.github_profile);
+      else if (Math.floor(Math.random() * 3) === 1) links.push(provider.linkedin_profile);
+      else links.push(provider.twitter_profile);
+    }
+  }
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = () => {
     if (user.admin) {
@@ -79,19 +90,19 @@ function NavigationBar() {
         </div>
         <div className="flex flex-col items-center gap-4 mt-auto">
           <div className="flex gap-x-6">
-            <a href="https://www.google.com/">
+            <a href={links[0]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faTwitter} />
             </a>
-            <a href="https://www.google.com/">
+            <a href={links[1]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faFacebook} />
             </a>
-            <a href="https://www.google.com/">
+            <a href={links[2]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faGoogle} />
             </a>
-            <a href="https://www.google.com/">
+            <a href={links[3]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faYoutube} />
             </a>
-            <a href="https://www.google.com/">
+            <a href={links[4]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faPinterest} />
             </a>
           </div>
