@@ -29,14 +29,14 @@ function ProviderDetails() {
                 <h1 className="text-4xl font-bold text-custom-green-500 self-end">
                   {provider.name}
                 </h1>
-                <p className="text-sm font-bold text-custom-grey-500 self-end text-right">{provider.bio}</p>
+                <p className="text-sm font-bold text-custom-grey-500 self-end">{provider.bio}</p>
               </div>
               <div className="overflow-y-scroll max-h-60">
                 {provider.skills.map((skill) => <p key={skill.id} className="p-2 bg-custom-white-500 odd:bg-gray-200">{skill.name}</p>)}
               </div>
               <div className="flex justify-between text-lg font-bold text-custom-grey-500 mt-6">
                 <p>Cost per Day:</p>
-                <p>{`$ ${provider.cost}`}</p>
+                <p>{`$ ${provider.cost}0`}</p>
               </div>
               <div className="flex my-12 self-end">
                 <Link to={`/${id}/reserve-developer`} state={provider} exact="true" className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none">

@@ -7,7 +7,7 @@ function AddDeveloper() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="w-full h-auto overflow-y-scroll">
+      <div className="w-full h-auto overflow-x-hidden">
         <NewProviderForm />
       </div>
     </div>

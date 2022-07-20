@@ -37,18 +37,11 @@ function NavigationBar() {
   };
   return (
     <>
-      {user
-        ? (
-          <div className="hidden lg:block text-custom-white-500 p-2 bg-custom-green-500 absolute top-0 right-0 z-10">
-            <p>{`Logged in as: ${user.name}`}</p>
-          </div>
-        )
-        : ''}
-      <div className="hidden lg:flex flex-col p-5 pr-0 items-center bg-custom-white-500 h-screen w-1/5 shadow-xl">
+      <div className="hidden lg:flex flex-col pl-5 items-center justify-between bg-custom-white-500 h-screen w-1/5 shadow-xl">
         <a href="/" className="w-24">
           <img className="object-contain" src={logo} alt="logo" />
         </a>
-        <div className="w-full pl-10 mt-20 space-y-1">
+        <div className="w-full space-y-1">
           <NavLink
             exact="true"
             to="/"
@@ -83,13 +76,16 @@ function NavigationBar() {
               </>
             ) : ''}
         </div>
-        <div className="flex items-center justify-center mt-20">
+        <div className="flex flex-wrap items-center justify-center">
+          <div>
+            <p className="text-custom-green-500 font-bold text-sm">{`Logged in as: ${user.name}`}</p>
+          </div>
           <button onClick={handleClick} className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none" type="button">
             Logout
           </button>
         </div>
-        <div className="flex flex-col items-center gap-4 mt-auto">
-          <div className="flex gap-x-6">
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex justify-between w-full">
             <a href={links[0]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faTwitter} />
             </a>
