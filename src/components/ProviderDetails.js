@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-// import { motion } from 'framer-motion';
 
 import { getProviders } from '../redux/reducers/providers';
 

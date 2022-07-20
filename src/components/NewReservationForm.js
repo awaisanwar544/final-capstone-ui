@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 import { newReservations } from '../redux/reducers/reservations';
 import { getProviders } from '../redux/reducers/providers';
@@ -108,41 +107,35 @@ function NewReservationForm() {
             <h1 className="text-xl px-5 md:text-4xl text-custom-grey-500">{`To hire ${provider.name} fill in the following details`}</h1>
             {message
               ? <p className="text-red-500">{message}</p> : ''}
-            <motion.div
-              animate={{ x: 0, opacity: 1, rotate: 0 }}
-              initial={{ x: '100%', opacity: 0, rotate: 20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
-                <div className="flex flex-col space-y-6">
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                      Start Date
-                      <input onChange={changeStartDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="date" type="date" required />
-                    </label>
-                  </div>
-                  <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
-                      End Date
-                      <input onChange={changeEndDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="date" required />
-                    </label>
-                  </div>
-                  <div className="mb-4">
-                    <div className="flex justify-between text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
-                      Total Cost:
-                      <span className="text-custom-green-500">
-                        { totalCost ? `$ ${totalCost.toFixed(2)}` : ' Invalid Dates' }
-                      </span>
-                    </div>
+            <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto" onSubmit={handleSubmit}>
+              <div className="flex flex-col space-y-6">
+                <div className="mb-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                    Start Date
+                    <input onChange={changeStartDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="date" type="date" required />
+                  </label>
+                </div>
+                <div className="mb-6">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rate">
+                    End Date
+                    <input onChange={changeEndDate} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="rate" type="date" required />
+                  </label>
+                </div>
+                <div className="mb-4">
+                  <div className="flex justify-between text-gray-700 text-lg font-bold mb-2" htmlFor="profile-image">
+                    Total Cost:
+                    <span className="text-custom-green-500">
+                      { totalCost ? `$ ${totalCost.toFixed(2)}` : ' Invalid Dates' }
+                    </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-center">
-                  <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none" type="submit">
-                    Hire Developer
-                  </button>
-                </div>
-              </form>
-            </motion.div>
+              </div>
+              <div className="flex items-center justify-center">
+                <button className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-green-500 hover:text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none" type="submit">
+                  Hire Developer
+                </button>
+              </div>
+            </form>
           </div>
         ) : 'Wait a moment while we fetch data'}
     </>
