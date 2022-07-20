@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 import { getProviders } from '../redux/reducers/providers';
 
@@ -16,19 +16,16 @@ function ProviderDetails() {
     }
   }, []);
   return (
-    <>
+    <div className="max-w-full">
       {provider
         ? (
-          <motion.div
-            animate={{ x: 0, opacity: 1, rotate: 0 }}
-            initial={{ x: '100%', opacity: 0, rotate: 20 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col md:flex-row w-full h-1/3 jusitify-center content-center items-center"
+          <div
+            className="flex flex-col md:flex-row md:w-full overflow:hidden jusitify-center content-center items-center"
           >
-            <div className="felx md:w-3/5 w-full px-20">
+            <div className="flex md:w-3/5 w-full px-10">
               <img className="object-cover bg-custom-green-500" src={provider.image} alt="Person" />
             </div>
-            <div className="flex flex-col md:w-2/5 w-full px-20">
+            <div className="flex flex-col md:w-2/5 w-full px-10">
               <div className="flex flex-col w-full pb-12">
                 <h1 className="text-4xl font-bold text-custom-green-500 self-end">
                   {provider.name}
@@ -48,9 +45,9 @@ function ProviderDetails() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         ) : 'Wait a moment while we fetch data'}
-    </>
+    </div>
   );
 }
 
