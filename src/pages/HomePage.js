@@ -14,16 +14,6 @@ function HomePage() {
   const providers = useSelector((state) => state.providers);
   const message = 'Currently there is no developer available';
 
-  const item = document.getElementById('dev-container');
-
-  window.addEventListener('wheel', (e) => {
-    if (e.deltaY > 0 && item) {
-      item.scrollLeft += 500;
-    } else if (e.deltaY <= 0 && item) {
-      item.scrollLeft -= 500;
-    }
-  });
-
   useEffect(() => {
     if (!user) {
       navigate('/signin');
@@ -33,7 +23,19 @@ function HomePage() {
       localStorage.removeItem('user');
       navigate('/signin');
     }
-    dispatch(getProviders());
+    dispatch(getProviders())
+      .then(() => {
+        const item = document.getElementById('dev-container');
+
+        item.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          if (e.deltaY > 0 && item) {
+            item.scrollLeft += 500;
+          } else if (e.deltaY <= 0 && item) {
+            item.scrollLeft -= 500;
+          }
+        });
+      });
   }, []);
   return (
     <div className="flex">
