@@ -39,9 +39,9 @@ function Reservation({ reservationData }) {
           </p>
           <p className="flex justify-around">
             Total cost:
-            <b>{reservationData.total_cost}</b>
+            <b>{`${reservationData.total_cost}0`}</b>
           </p>
-          <p className="text-custom-grey-500 my-3">{`(Reserved on ${reservationData.created_at.slice(0, 10).split('-').reverse().join(' / ')})`}</p>
+          <p className="text-custom-grey-500 my-3">{`(Reserved on ${new Date(reservationData.created_at).toLocaleDateString('en-US', { month: 'long' })} ${reservationData.created_at.split('').splice(8, 2).join('')}, ${reservationData.created_at.split('').splice(0, 4).join('')})`}</p>
         </div>
       </div>
       <div className="flex items-center justify-center">

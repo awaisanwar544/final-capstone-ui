@@ -76,7 +76,7 @@ function NavigationBar() {
               </>
             ) : ''}
         </div>
-        <div className="flex flex-wrap items-center justify-center">
+        <div className="flex flex-col items-center justify-center truncate pr-5">
           <div>
             <p className="text-custom-green-500 font-bold text-sm">{`Logged in as: ${user.name}`}</p>
           </div>
@@ -84,7 +84,7 @@ function NavigationBar() {
             Logout
           </button>
         </div>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 w-full pr-5">
           <div className="flex justify-between w-full">
             <a href={links[0]} target="_blank" rel="noreferrer">
               <FontAwesomeIcon className="text-custom-grey-500 text-xl hover:text-custom-green-500" icon={faTwitter} />

@@ -57,7 +57,7 @@ function NewProviderForm() {
   }, []);
   return (
     <div
-      className="flex flex-col w-full flex items-center justify-center space-y-10"
+      className="flex flex-col w-full flex items-center justify-center space-y-10 md:max-h-screen"
     >
       <h1 className="text-4xl text-custom-grey-500 mt-14 md:mt-0">Add New Developer</h1>
       <p>
@@ -107,11 +107,10 @@ function NewProviderForm() {
               <label className="block text-gray-700 text-sm font-bold mb-4 max-h-36" htmlFor="skills">
                 Skills
                 <span className="text-red-500"> *</span>
-                <div className="overflow-y-scroll  max-h-32">
+                <div className="overflow-y-scroll mt-2 max-h-32">
                   { skillsError
                     ? <p className="text-red-500">{skillsError}</p>
                     : '' }
-                  <br />
                   {skills.map((skill) => (
                     <div key={skill.id}>
                       <input type="checkbox" className="checked:accent-custom-green-500" id={`skill-${skill.id}`} name="skills" value={skill.name} />
