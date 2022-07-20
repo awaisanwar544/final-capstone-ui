@@ -59,7 +59,7 @@ function NewProviderForm() {
     <div
       className="flex flex-col w-full h-screen flex items-center justify-center space-y-10"
     >
-      <h1 className="text-4xl text-custom-grey-500 mt-40 md:mt-0">Add New Developer</h1>
+      <h1 className="text-4xl text-custom-grey-500 mt-80 md:mt-0">Add New Developer</h1>
       <p>
         All fields with (
         <span className="text-red-500">*</span>
@@ -69,6 +69,7 @@ function NewProviderForm() {
         animate={{ x: 0, opacity: 1, rotate: 0 }}
         initial={{ x: '100%', opacity: 0, rotate: 20 }}
         transition={{ duration: 0.5 }}
+        className="px-5"
       >
         <form className="bg-white mx-auto" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-10">
