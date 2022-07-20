@@ -57,9 +57,9 @@ function NewProviderForm() {
   }, []);
   return (
     <div
-      className="flex flex-col w-full h-screen flex items-center justify-center space-y-10"
+      className="flex flex-col w-full flex items-center justify-center space-y-10"
     >
-      <h1 className="text-4xl text-custom-grey-500 mt-80 md:mt-0">Add New Developer</h1>
+      <h1 className="text-4xl text-custom-grey-500 mt-14 md:mt-0">Add New Developer</h1>
       <p>
         All fields with (
         <span className="text-red-500">*</span>
@@ -71,7 +71,7 @@ function NewProviderForm() {
         transition={{ duration: 0.5 }}
         className="px-5"
       >
-        <form className="bg-white mx-auto" onSubmit={handleSubmit}>
+        <form className="bg-white mx-auto pb-5" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row md:space-x-10">
             <div className="">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -104,20 +104,22 @@ function NewProviderForm() {
               </label>
             </div>
             <div className="md:w-2/5 w-full">
-              <label className="block text-gray-700 text-sm font-bold mb-4 max-h-36 overflow-y-scroll" htmlFor="skills">
+              <label className="block text-gray-700 text-sm font-bold mb-4 max-h-36" htmlFor="skills">
                 Skills
                 <span className="text-red-500"> *</span>
-                { skillsError
-                  ? <p className="text-red-500">{skillsError}</p>
-                  : '' }
-                <br />
-                {skills.map((skill) => (
-                  <div key={skill.id}>
-                    <input type="checkbox" className="checked:accent-custom-green-500" id={`skill-${skill.id}`} name="skills" value={skill.name} />
-                    {` ${skill.name}`}
-                    <br />
-                  </div>
-                ))}
+                <div className="overflow-y-scroll  max-h-32">
+                  { skillsError
+                    ? <p className="text-red-500">{skillsError}</p>
+                    : '' }
+                  <br />
+                  {skills.map((skill) => (
+                    <div key={skill.id}>
+                      <input type="checkbox" className="checked:accent-custom-green-500" id={`skill-${skill.id}`} name="skills" value={skill.name} />
+                      {` ${skill.name}`}
+                      <br />
+                    </div>
+                  ))}
+                </div>
               </label>
             </div>
           </div>
