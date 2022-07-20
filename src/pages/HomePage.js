@@ -13,6 +13,17 @@ function HomePage() {
   const user = JSON.parse(localStorage.getItem('user'));
   const providers = useSelector((state) => state.providers);
   const message = 'Currently there is no developer available';
+
+  const item = document.getElementById('dev-container');
+
+  window.addEventListener('wheel', (e) => {
+    if (e.deltaY > 0 && item) {
+      item.scrollLeft += 500;
+    } else if (e.deltaY <= 0 && item) {
+      item.scrollLeft -= 500;
+    }
+  });
+
   useEffect(() => {
     if (!user) {
       navigate('/signin');
@@ -33,7 +44,7 @@ function HomePage() {
           <h1 className="text-4xl md:text-6xl text-custom-grey-500">Developers To Hire</h1>
           <p className="text-xl">Please select a developer from the list:</p>
         </div>
-        <div className="w-full h-full flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
+        <div id="dev-container" className="w-full h-full flex items-center flex-col overflow-y-scroll md:flex-row md:overflow-x-scroll md:overflow-y-hidden">
           { providers.length
             ? (providers.map((item) => <ProviderCard key={item.id} providerData={item} />))
             : <p className="text-red-500">{message}</p> }
