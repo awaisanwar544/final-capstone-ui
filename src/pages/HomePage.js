@@ -40,12 +40,12 @@ function HomePage() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="w-screen h-screen flex flex-col items-center justify-center md:space-y-20 md:overflow-y-hidden">
-        <div className="flex flex-col items-center pt-16 px-3 md:pt-2 shadow-md z-10 md:shadow-none">
+      <div className="w-screen h-screen flex flex-col items-center justify-center md:overflow-y-hidden">
+        <div className="flex flex-col items-center pt-16 px-3 md:py-4 shadow-md z-10 md:shadow-none">
           <h1 className="text-4xl md:text-6xl text-custom-grey-500">
             Developers To Hire
           </h1>
-          <p className="my-5 text-center bg-custom-green-500 p-4 text-custom-white-500">
+          <p className="hidden lg:block my-5 text-center bg-custom-green-500 p-4 text-custom-white-500">
             {
               ' Book Dev is an exclusive platform of the top freelance software developers in the world. Top companies hire Book Dev freelancers for their most important projects. Hire a Book Dev freelancer for your digital product.'
             }
