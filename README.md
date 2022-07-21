@@ -64,6 +64,21 @@ To get a local copy up and running follow these simple example steps.
 - Run `npm start` to run the application.
 
 
+## Kanban Board: 
+
+This project was developed by a team of 5 people, you can check that out in our [authors section](#authors-).
+
+- [You can click here to redirect to our front-end (UI) **kanban board**](https://github.com/awaisanwar544/final-capstone-ui/projects/1).
+
+- [Also check our back-end (API) **kanban board** by clicking here](https://github.com/awaisanwar544/final-capstone-api/projects/1).
+
+- This is a screenshot of our **kanban board** (UI) at the beggining of the project:
+
+![Start_kanban_board](https://user-images.githubusercontent.com/10048317/177626342-04ddd58f-96b0-45ec-8631-a6561329347d.png)
+
+> [You can check our initial issue with that info by clicking here](https://github.com/awaisanwar544/final-capstone-api/issues/18)
+
+
 ## Authors: 👋
 
 ### 👤 Joaquin G.L. Zanetti
@@ -93,20 +108,6 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@awaisanwar544](https://github.com/awaisanwar544)
 - LinkedIn: [@awaisanwar544](https://www.linkedin.com/in/awaisanwar544/)
-
-## Kanban Board: 
-
-This project was developed by a team of 5 people, you can check that out in our [authors section](#authors-).
-
-- [You can click here to redirect to our front-end (UI) **kanban board**](https://github.com/awaisanwar544/final-capstone-ui/projects/1).
-
-- [Also check our back-end (API) **kanban board** by clicking here](https://github.com/awaisanwar544/final-capstone-api/projects/1).
-
-- This is a screenshot of our **kanban board** (UI) at the beggining of the project:
-
-![Start_kanban_board](https://user-images.githubusercontent.com/10048317/177626342-04ddd58f-96b0-45ec-8631-a6561329347d.png)
-
-> [You can check our initial issue with that info by clicking here](https://github.com/awaisanwar544/final-capstone-api/issues/18)
 
 ## Contributing: 🤝
 
