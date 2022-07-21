@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Render App 1`] = `
+<div>
+  <button
+    aria-controls="mobile-menu"
+    aria-expanded="false"
+    className="m-5 inline-flex items-center p-2 ml-3 text-sm text-custom-green-500 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-custom-green-500"
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      className="w-6 h-6 z-20"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clipRule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+        fillRule="evenodd"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      className="hidden"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clipRule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <div
+    className="hidden"
+    style={Object {}}
+  >
+    <div
+      className="w-full mt-20 space-y-1"
+    >
+      <a
+        aria-current="page"
+        className="flex flex-col bg-custom-grey-500 text-custom-white-500 text-xl font-bold h-16 justify-center p-5"
+        exact="true"
+        href="/"
+        onClick={[Function]}
+      >
+        <p>
+          All Developers
+        </p>
+      </a>
+      <a
+        className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+        exact="true"
+        href="/reservations"
+        onClick={[Function]}
+      >
+        <p>
+          Manage Reservations
+        </p>
+      </a>
+      <a
+        className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+        exact="true"
+        href="/add-developer"
+        onClick={[Function]}
+      >
+        <p>
+          Add New Developer
+        </p>
+      </a>
+      <a
+        className="flex flex-col bg-custom-white-500 text-custom-grey-500 text-xl font-bold justify-center h-16 p-5 hover:text-custom-white-500 hover:bg-custom-grey-500"
+        exact="true"
+        href="/delete-developer"
+        onClick={[Function]}
+      >
+        <p>
+          Delete Developer
+        </p>
+      </a>
+      <div
+        className="flex items-center justify-center pt-20"
+      >
+        <button
+          className="bg-custom-white-500 text-custom-grey-500 border border-custom-green-500 hover:bg-custom-grey-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none"
+          onClick={[Function]}
+          type="button"
+        >
+          Logout
+        </button>
+      </div>
+      <div
+        className="text-custom-green-500 p-2 bg-custom-grey-500 flex items-center justify-center absolute bottom-0 w-full"
+      >
+        <p>
+          Logged in as: John Doe
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
