@@ -43,10 +43,10 @@ function ProviderCard({ providerData }) {
       initial={{ x: '100%', opacity: 0, rotate: 20 }}
       transition={{ duration: 0.5 }}
       id={`provider-${providerData.id}`}
-      className="flex flex-col md:flex-row justify-around items-center mt-8 py-4 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms"
+      className="flex flex-col md:flex-row justify-between items-center mt-8 py-4 px-5 shadow-lg w-3/4 border-2 border-transparent hover:border-custom-green-500 rounded-md hover:shadow-2xl transition hover:scale-110 duration:300ms"
     >
-      <div className="flex grow justify-around items-center">
-        <div className="item w-auto h-20">
+      <div className="flex w-full grow justify-between items-center">
+        <div className="item h-20">
           <img className="w-20 h-20 m-auto object-cover rounded-full bg-custom-green-500" src={providerData.image} alt={providerData.name} />
         </div>
         <div className="item w-4/5 h-28 text-center flex flex-wrap flex-col justify-around overflow-hidden">

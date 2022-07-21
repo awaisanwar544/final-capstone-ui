@@ -19,7 +19,7 @@ function Reservation({ reservationData }) {
     const card = document.getElementById(`reservation-${reservationData.id}`);
     card.classList.add('hover:border-red-500');
     card.childNodes[0].childNodes[0].classList.add('grayscale');
-    card.childNodes[1].childNodes[0].childNodes[0].innerHTML = `Are you sure you want to delete ${reservationData.provider_name}?`;
+    card.childNodes[1].childNodes[0].childNodes[0].innerHTML = `Are you sure you want to delete your reservation with ${reservationData.provider_name}?`;
     card.childNodes[1].childNodes[0].childNodes[1].classList.add('hidden');
     card.childNodes[1].childNodes[0].childNodes[2].classList.add('hidden');
     card.childNodes[1].childNodes[0].childNodes[3].classList.add('hidden');
