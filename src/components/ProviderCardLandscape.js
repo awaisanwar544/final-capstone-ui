@@ -11,7 +11,6 @@ function ProviderCard({ providerData }) {
     const card = document.getElementById(`provider-${providerData.id}`);
     card.classList.add('hover:border-red-500');
     card.childNodes[0].childNodes[0].classList.add('grayscale');
-    card.childNodes[0].childNodes[1].childNodes[1].classList.add('hidden');
     card.childNodes[0].childNodes[1].childNodes[0].innerHTML = `Are you sure you want to delete ${providerData.name}?`;
     const button = card.childNodes[1].childNodes[0];
     const yesButton = card.childNodes[1].childNodes[1];
@@ -29,7 +28,6 @@ function ProviderCard({ providerData }) {
       card.classList.remove('text-custom-grey-500', 'hover:border-red-500');
       card.childNodes[0].childNodes[0].classList.remove('grayscale');
       card.childNodes[0].childNodes[1].childNodes[0].innerHTML = `${providerData.name}`;
-      card.childNodes[0].childNodes[1].childNodes[1].classList.remove('hidden');
       noButton.classList.add('hidden');
       yesButton.classList.add('hidden');
       button.classList.remove('hidden');
@@ -51,7 +49,6 @@ function ProviderCard({ providerData }) {
         </div>
         <div className="item w-4/5 h-28 text-center flex flex-wrap flex-col justify-around overflow-hidden">
           <h3 className="font-bold">{providerData.name}</h3>
-          <p className="text-custom-grey-500">{providerData.bio}</p>
         </div>
       </div>
       <div className="flex items-center justify-center md:mr-4">
