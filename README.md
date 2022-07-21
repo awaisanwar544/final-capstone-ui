@@ -18,7 +18,7 @@ With [the Book dev app](https://book-dev.herokuapp.com/), you can do the followi
   - On click of these developers, you can access their details (A small bio, their skills, etc.) You can then decide if you want to hire them by clicking the hire button.
   - On the reserve developer page you can select a start and an end date to book a developer's services, you'll automatically be redirected to your reservations once your appointment has been submitted.
 - Reservations:
-  - After creating a new reservation or by navigating from the navigation bar, you'll find yourself in the reservations page, where you can check the reservation details and delete it.
+  - After creating a new reservation or by navigating from the navigation bar, you'll find yourself in the reservations page, where you can check the reservation details and delete it after a confirmation.
   
 ## App admin functions: :sunglasses:
 
@@ -26,7 +26,7 @@ If you're an admin user on [the Book dev app](https://book-dev.herokuapp.com/), 
 
 - Developers:
   - From the navigation bar you can go to add a new developer fill the new developer form, after you successfully submit the form, you should be able to see it in the catalog of developers.
-  - Also from the navigation bar, you can navigate  to the delete developers page, you'll see a list of all the available developers with a reduced amount of info, but with the ability of deleting them on a single click.
+  - Also from the navigation bar, you can navigate  to the delete developers page, you'll see a list of all the available developers with a reduced amount of info, but with the ability of deleting them on a single click after confirmation.
   
 ## Built With: :mag:
 
