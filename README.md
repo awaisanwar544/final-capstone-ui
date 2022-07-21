@@ -96,7 +96,7 @@ To get a local copy up and running follow these simple example steps.
 
 ## Kanban Board: 
 
-This project was developed by a team of 5 people, you can check that out in our [authors section](#authors).
+This project was developed by a team of 5 people, you can check that out in our [authors section](#authors-).
 
 - [You can click here to redirect to our front-end (UI) **kanban board**](https://github.com/awaisanwar544/final-capstone-ui/projects/1).
 
