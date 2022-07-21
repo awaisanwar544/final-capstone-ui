@@ -39,7 +39,6 @@ function ResetPassword() {
   };
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-custom-green-500 space-y-10">
-      {displayMessage && <p className="text-custom-white-500">{displayMessage}</p>}
       <form className="bg-white shadow-xl rounded px-8 pt-6 pb-8 h-fit mx-auto max-w-xs" onSubmit={handleSubmit}>
         <div className="flex w-full p-10 justify-center">
           <a href="/">
@@ -49,13 +48,13 @@ function ResetPassword() {
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
             New password
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="password" type="password" placeholder="******" required />
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="password" type="password" placeholder="******" minLength={6} required />
           </label>
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirm-password">
             Confirm password
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="confirm-password" type="password" placeholder="******" required />
+            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-custom-green-500 focus:placeholder:text-custom-green-500" id="confirm-password" type="password" placeholder="******" minLength={6} required />
           </label>
         </div>
         <div className="flex items-center justify-center">
@@ -63,6 +62,7 @@ function ResetPassword() {
             Submit
           </button>
         </div>
+        {displayMessage && <p className="mt-5 text-center text-red-500">{displayMessage}</p>}
       </form>
     </div>
   );

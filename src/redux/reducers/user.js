@@ -9,6 +9,9 @@ const LOG_OUT = 'LOG_OUT';
 const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 const PASSWORD_RESET = 'PASSWORD_RESET';
 
+// errors actions
+const ERROR = 'ERROR';
+
 const URL = getURL();
 const APP_TOKEN = getToken();
 
@@ -29,12 +32,19 @@ export const signUp = (name, email, password) => async (dispatch) => {
     password,
   };
 
-  const response = await axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => res.data);
-  dispatch({
-    type: SIGN_UP,
-    payload: response,
-  });
+  await axios.post(`${URL}/user/add`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => {
+      dispatch({
+        type: SIGN_UP,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERROR,
+        error: err,
+      });
+    });
 };
 
 export const logIn = (email, password) => async (dispatch) => {
@@ -43,12 +53,19 @@ export const logIn = (email, password) => async (dispatch) => {
     password,
   };
 
-  const response = await axios.post(`${URL}/user`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => res.data);
-  dispatch({
-    type: LOG_IN,
-    payload: response,
-  });
+  await axios.post(`${URL}/user`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => {
+      dispatch({
+        type: LOG_IN,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERROR,
+        error: err,
+      });
+    });
 };
 
 export const logOut = () => (
@@ -60,12 +77,20 @@ export const forgotPassword = (email) => async (dispatch) => {
     email,
   };
 
-  const response = await axios.post(`${URL}/password/forgot`, JSON.stringify(data), axiosAppConfig)
-    .then((res) => res.data);
-  dispatch({
-    type: FORGOT_PASSWORD,
-    payload: response,
-  });
+  await axios.post(`${URL}/password/forgot`, JSON.stringify(data), axiosAppConfig)
+    .then((res) => {
+      dispatch({
+        type: FORGOT_PASSWORD,
+        payload: res.data,
+        error: false,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: ERROR,
+        error: err,
+      });
+    });
 };
 
 export const passwordReset = (newPassword, resetToken) => async (dispatch) => {
@@ -98,10 +123,7 @@ export default function userReducer(state = initialState, action = {}) {
   }
 
   if (action.type === FORGOT_PASSWORD) {
-    return {
-      ...state,
-      ...action.payload,
-    };
+    return action.payload;
   }
 
   if (action.type === PASSWORD_RESET) {
@@ -113,6 +135,12 @@ export default function userReducer(state = initialState, action = {}) {
 
   if (action.type === LOG_OUT) {
     return state;
+  }
+
+  if (action.type === ERROR) {
+    return {
+      error: action.error,
+    };
   }
 
   return state;

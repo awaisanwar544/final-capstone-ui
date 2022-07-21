@@ -18,7 +18,7 @@ function DeleteDeveloper() {
     <div className="flex">
       <MobileMenu />
       <NavigationBar />
-      <div className="flex flex-col items-center h-screen w-full overflow-y-scroll pt-12 text-center">
+      <div className="flex flex-col items-center h-screen w-full overflow-y-scroll pt-20 text-center">
         <h1 className="text-4xl text-custom-grey-500">Delete a Developer</h1>
         {
             providers.map((item) => <ProviderCardLandscape key={item.id} providerData={item} />)

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -9,6 +9,9 @@ import { logIn } from '../redux/reducers/user';
 function SignIn() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const error = useSelector((state) => state.user.error);
+  const [displayMessage, setDisplayMessage] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -22,7 +25,11 @@ function SignIn() {
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/');
     }
-  }, [user]);
+
+    if (error) {
+      setDisplayMessage(error.response.data['error:']);
+    }
+  }, [user, error]);
   return (
     <motion.div
       className="w-screen h-screen flex items-center bg-custom-green-500"
@@ -56,6 +63,7 @@ function SignIn() {
             Forgot Password?
           </Link>
         </div>
+        {displayMessage && <p className="mt-5 text-center text-red-500">{displayMessage}</p>}
         <Link to="/signup" exact="true" className="inline-block mt-10 align-baseline font-bold text-sm text-custom-grey-500 hover:text-custom-green-500">
           Do not have an account?
           <br />
